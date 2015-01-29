@@ -1,0 +1,8 @@
+1. new files, go to dir:
+git add _file_name_
+
+2. do a commit msg in parent dir
+git commit -m "msg here"
+
+3. do a push
+git push
