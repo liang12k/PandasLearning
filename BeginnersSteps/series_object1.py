@@ -1,11 +1,12 @@
 import pandas
 import numpy
 
-# Series: obj has array + dict like properties
-# -access via indexes, keys
-# -"amphibian" object
-# -mapping of index-to-values
-
+__doc__ = """
+ Series: obj has array + dict like properties
+ -access via indexes, keys
+ -"amphibian" object
+ -mapping of index-to-values
+"""
 s1 = pandas.Series([33, 19, 89, 11, -5, 9])
 
 print s1

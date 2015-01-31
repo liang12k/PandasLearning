@@ -1,6 +1,8 @@
 import pandas
 import numpy
 
+__doc__ = """creating a Series using num vals, str indexes"""
+
 vals_nums = [33, 19, 15, 89, 11, -5, 9]
 index_strs = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 

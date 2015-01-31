@@ -1,6 +1,8 @@
 import pandas
 import numpy
 
+__doc__ = """learning about Series being homogenous; values are numerical"""
+
 # values are homogenous; note the float num idx 1
 vals_nums = [33, 19.3, 15, 89, 11, -5, 9]
 index_strs = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
