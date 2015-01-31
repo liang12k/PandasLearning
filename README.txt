@@ -4,6 +4,9 @@ learning python's pandas
 learning python pandas via YouTube playlist
 http://goo.gl/4vagxu
 
+Alfred Essa github
+https://github.com/alfredessa/pdacookbook
+
 common mac terminal nano cmds
 http://goo.gl/fRrLZg
 
