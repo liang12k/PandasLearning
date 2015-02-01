@@ -1,4 +1,6 @@
 import pandas
+### # pylab is needed to render the plot window
+import pylab
 
 """
 'GroupBy' : splitting --> analyzing --> combining
@@ -50,4 +52,17 @@ ts = topsalaries[["Year","Salary"]]
 # print ts
 ts = ts.set_index("Year")
 # print ts
-# ts.plot() # need to install matplotlib
+
+ts.plot(title="mlbsalaries_plot_SalaryByYear") 
+### # need to install matplotlib, pylab 
+# mlbsalaries_plot_SalaryByYear.png
+
+### # pylab is needed to render the window; individually need to do show()
+pylab.show()
+
+grpMlb.Salary.median().plot(title="mlbsalaries_plot_SalaryByYear-Median") 
+# == grpMlb["Salary"].median().plot()
+# mlbsalaries_plot_SalaryByYear-Median.png
+
+### # pylab is needed to render the window; individually need to do show()
+pylab.show()

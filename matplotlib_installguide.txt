@@ -25,3 +25,19 @@ http://stackoverflow.com/questions/5345348/what-is-the-best-way-to-install-pil-o
 **libpng
  http://sourceforge.net/projects/libpng/
 
+**agg (unsure how to install)
+ http://agg.sourceforge.net/antigrain.com/download/index.html
+
+**pylab
+ sudo easy_install pylab
+
+**PIL
+ sudo easy_install PIL
+
+**pytz
+ sudo easy_install pytz
+
+**six
+ sudo easy_install six
+
+
