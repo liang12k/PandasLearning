@@ -1,0 +1,2 @@
+iPython install guide
+http://smash.psych.nyu.edu/courses/spring12/modeling/ipythonhints.html
