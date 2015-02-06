@@ -1,0 +1,4 @@
+lesson 3.1 - Statistics warmup
+-histogram plot
+-box plot 
+https://www.youtube.com/watch?v=YKGMu7KQ1E0
