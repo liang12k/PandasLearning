@@ -1,0 +1,8 @@
+http://stanford.edu/~mwaskom/software/seaborn/installing.html
+
+Seaborn:
+sudo pip install seaborn
+
+addt'ls:
+sudo pip install statsmodels
+sudo pip install patsy
