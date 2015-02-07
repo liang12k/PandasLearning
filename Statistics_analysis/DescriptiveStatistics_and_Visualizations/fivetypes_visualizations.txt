@@ -1,5 +1,37 @@
 1. histogram
+http://ocw.jhsph.edu/courses/MethodsInBiostatisticsI/PDFs/lecture11.pdf
+https://quantixed.wordpress.com/2015/01/13/tips-from-the-blog-iii-violin-plots/
+-display small estimate of density
+-bar graph of frequency, times variable take values
+ or range of values for data
+-difficult to over lay
+
 2. box plot
+http://ocw.jhsph.edu/courses/MethodsInBiostatisticsI/PDFs/lecture11.pdf
+-**NOT FOR SMALL # OF OBSERVATIONS
+-center line == median
+-edges == quartiles
+-outliers ~= points beyond whiskers
+
 3. kernel density estimation
-4. violin plit
-5. cumulative distribution function
+http://ocw.jhsph.edu/courses/MethodsInBiostatisticsI/PDFs/lecture11.pdf
+-modern vers of histograms / curve + histogram
+-usually Gaussian density
+-kernel 'bandwidth' == histogram bin size
+ *too low == jagged | too high == oversmooth
+
+4. violin plot
+https://quantixed.wordpress.com/2015/01/13/tips-from-the-blog-iii-violin-plots/
+http://en.wikipedia.org/wiki/Violin_plot
+-boxplot + probability density
+
+5. cumulative distribution function (CDF)
+http://www.wavemetrics.net/doc/igorman/III-12%20Statistics.pdf
+http://support.minitab.com/en-us/minitab/17/topic-library/basic-statistics-and-graphs/probability-distributions-and-random-data/basics/using-the-cumulative-distribution-function-cdf/#what-is-the-cumulative-distribution-function-cdf
+http://www.math.vt.edu/people/qlfang/class_home/Lesson2021.pdf
+-[0, 1] range for %
+-displays probability for specified value
+-calculate probabily against value that's: above, below, in-between 
+-limit[P(x)]
+ =0, as x-> neg. infinite
+ =1, as x-> pos. infinite
