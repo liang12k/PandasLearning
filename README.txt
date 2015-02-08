@@ -7,6 +7,12 @@ http://goo.gl/4vagxu
 Alfred Essa github
 https://github.com/alfredessa/pdacookbook
 
+Pandas Cookbooks:
+/GregReda: 
+ -http://www.gregreda.com/2013/10/26/intro-to-pandas-data-structures/
+/SlugsGuide:
+ -https://sites.google.com/site/aslugsguidetopython/data-analysis/pandas/pandas-example
+
 common mac terminal nano cmds
 http://goo.gl/fRrLZg
 

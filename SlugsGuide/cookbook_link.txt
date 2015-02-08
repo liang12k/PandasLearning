@@ -1,0 +1,2 @@
+Slugs Guide link
+https://sites.google.com/site/aslugsguidetopython/data-analysis/pandas/pandas-example
