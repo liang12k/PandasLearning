@@ -1,0 +1,55 @@
+Python for Data Analysis
+------------------------
+
+"data" : structured data
+-multidimensional arrays (matrices)
+-tabular/spreadsheet like data (ex: dbs, csv)
+-key columns (SQL: primary/foreign keys)
+-(un)evenly spaced time series
+
+flow: data --> structured data --> analysis/modeling
+
+Python: researching/prototyping + building production systems
+-"two-language" problem's solution
+-"glue" : glue together [decades] of legacy software
+-interpreted code: runs slower than compiled language
+-programmer time > cpu time
+-not (ideal) language for concurrent, multithreaded applications (CPU bound threads)
+-GIL: global interpreter lock; limits interpreter to exeuction 1 Python bytecode instruction at a time
+
+Essential libraries:
+Numpy: (numerical python)
+------
+-ndarray: multidimensional array
+-functions for doing element-wise computations with arrays/mathematical operations betw arrays
+-read/write array-base data sets to disk
+-linear algebra operations, Fourier transform, random number generator
+-efficient in sotring/manipulating data; primary container to pass data betw algorithms
+
+pandas: (panel data, Python data analysis)
+-------
+-provides rich data structurs, functions to analyze structured data quickly + expressively
+-DataFrame: 2D tabular, column-orientated data structure; row/col labels
+ >similar to 'R': data.frame
+-NumPy array computing features + data manipulation of spreadsheets, relational databases
+-time series functionality; financial analysis
+
+matplotlib:
+-----------
+-producing interactive plots, 2D data visualizations
+
+IPython:
+--------
+-robust, productive environment for interactive, exploratory computing
+-interacting/visualizing data with matplotlib
+-QT framework based GUI console
+-Mathematica like HTML notebook
+-infrastructure for interactive parallel, distributed programming
+
+SciPy:
+------
+-collection of packages addressing number of various standard problem domains
+ >scientific computing
+-Numpy + SciPy ~= MATLAB
+
+
