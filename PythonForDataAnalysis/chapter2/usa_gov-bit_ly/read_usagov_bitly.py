@@ -35,14 +35,26 @@ def get_counts(sequence):
     return counts
 # counts = get_counts(time_zones); print counts; print counts["America/New_York"]
 
+# # using collections package
+from collections import defaultdict
+
 def get_counts2(sequence):
-    from collections import defaultdict
     counts = defaultdict(int) # values initialized to 0
     for x in sequence: counts[x] += 1
     return counts
 counts = get_counts2(time_zones);
 # print counts; print counts["America/New_York"]
 # print len(time_zones) # 3440
+
+# # self-code : using list comprehension to create counts
+def get_counts3(sequence): # self-code
+    counts = defaultdict(int)
+    # # again, counts dict never updated, always returning 0 --> total 1 for key
+    # return dict((zone, counts.get(zone,0)+1) for zone in sequence)
+    [counts.update({zone: counts.get(zone,0)+1}) for zone in sequence]
+    return counts
+counts = get_counts3(time_zones)
+print counts, counts["America/New_York"]
 
 # # top 10 time zones & their counts
 def top_counts(count_dict, n=10):
