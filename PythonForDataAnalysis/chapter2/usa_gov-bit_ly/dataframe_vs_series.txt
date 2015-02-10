@@ -1,0 +1,21 @@
+http://pandas.pydata.org/pandas-docs/stable/dsintro.html#series
+
+Series:
+-------
+>>can be:
+-python dict
+-numpy.ndarray
+-scalar value (number)
+++++++++
+-1D labeled array holding any data type
+-axis labels == index
+
+
+DataFrame:
+----------
+>>inputs are:
+-dict of 1D numpy.ndarray, lists, dicts, Series
+-2D numpy.ndarray
+-structured/record ndarray
+-Series
+-DataFrame
