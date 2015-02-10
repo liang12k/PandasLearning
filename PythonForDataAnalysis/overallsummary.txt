@@ -53,3 +53,21 @@ SciPy:
 -Numpy + SciPy ~= MATLAB
 
 
+Data Analysis:
+--------------
+Interacting w outside world
+ -r/w variety of file formats, dbs
+
+Preparation
+ -transforming data for analysis; clean/mung/combine/normalize/reshape/slice+dice
+
+Transformation
+ -applying mathematical, statiscal operations to groups of data sets
+  to derive new data sets
+
+Modeling, Computation
+ -connecting data to statistical models, machine learning algorithms,
+  computational tools
+
+Presentation
+ -creating interacting, static graphical visualizations, textual summaries
