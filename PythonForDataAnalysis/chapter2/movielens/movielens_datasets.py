@@ -16,4 +16,8 @@ movies = pd.read_table("movies.dat", sep="::", header=None, names=mnames)
 
 data = pd.merge(pd.merge(ratings, users), movies)
 # print data # [1000209 rows x 10 columns]
-print data.ix[0]
+# print data.ix[0]
+
+mean_ratings = data.pivot_table("rating", rows="title", cols="gender", 
+                               aggfunc="mean")
+print mean_ratings[:5]
