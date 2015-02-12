@@ -34,11 +34,31 @@ data = pd.merge(pd.merge(ratings, users), movies)
 # # rows, cols are deprecated
 # mean_ratings = data.pivot_table("rating", rows="title", cols="gender", 
 #                                aggfunc="mean")
-# # pivot on "rating" DataFrame; index col = "title", mean on "gender"
+# # pivot on "rating" DataFrame; index col = "title",
+# # mean on "gender" ratings
 mean_ratings = data.pivot_table(
     "rating",
     index="title",
     columns="gender",
     aggfunc="mean",
 )
-print mean_ratings[:5]
+# print mean_ratings[:5]
+
+# # group by "title", get size of Series based on grouped by "title"
+# # Reminder: data is merged of 3 DataFrames
+ratings_by_title = data.groupby("title").size()
+# print ratings_by_title[:10]
+
+# # get titles with min minSize ratings
+minSize = 250
+active_titles = ratings_by_title.index[ratings_by_title >= minSize]
+# print active_titles
+
+# # using active_titles w ratings >= minSize; 
+# # index is the titles; "filtering"
+mean_ratings = mean_ratings.ix[active_titles]
+# print mean_ratings
+
+# # filter films based on females; sort by F col
+top_female_ratings = mean_ratings.sort_index(by="F", ascending=False)
+# print top_female_ratings[:10]
