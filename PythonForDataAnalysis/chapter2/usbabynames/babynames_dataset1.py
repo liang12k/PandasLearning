@@ -105,3 +105,9 @@ subset = total_births[["John","Harry","Mary","Marilyn"]]
 ### Note: seems like the 4 names have dropped off
 ### -changing times have changing popularity in names
 ### -ex: creating unique names
+
+# # big spike in 1960
+kennysubset = total_births["Kenny"]
+kennysubset.plot(
+    subplots=True, grid=True, title="Kenny: Number of births per year"
+); # pylab.show()
