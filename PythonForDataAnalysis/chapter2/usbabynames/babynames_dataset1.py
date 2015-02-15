@@ -2,6 +2,20 @@ import pandas as pd
 import pylab
 import numpy as np
 
+"""
+US Baby Names 1880-2010
+-----------------------
+US Soc. Sec. Admin. (SSA) data on frequency of baby names
+from 1880 through present (2010).
+
+babynames_dataset1.py:
+-loading csv files into DataFrames
+-aggregate all files together into single merge DataFrame
+-adding colname ("prop")
+-quick sanity check on dataset based on "prop" col sum() to ~= 1
+-get top 1000 of M,F names
+"""
+
 names1880 = pd.read_csv("names/yob1880.txt", names=["name","sex","births"])
 # print names1880 # [2000 rows x 3 columns]
 # # use sum of "births" col by sex, as total number of births in year 1880
@@ -87,3 +101,7 @@ subset = total_births[["John","Harry","Mary","Marilyn"]]
 #     subplots=True, figsize=(12,10), grid=False, 
 #     title="Number of births per year"
 # ); pylab.show()
+
+### Note: seems like the 4 names have dropped off
+### -changing times have changing popularity in names
+### -ex: creating unique names
