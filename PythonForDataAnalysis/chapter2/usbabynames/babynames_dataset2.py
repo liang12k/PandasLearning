@@ -1,4 +1,4 @@
-import pandas
+import pandas as pd
 import numpy as np
 import pylab
 from babynames_dataset1 import (top1000,boys,girls)
@@ -12,9 +12,7 @@ from 1880 through present (2010).
 babynames_dataset2.py:
 -measuring in/de-crease
 -
-"""
-
-"""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 reminder:
 names = pd.concat(pieces, ignore_index=True) # concat of all names
 grouped = names.groupby(["year","sex"])
@@ -73,5 +71,27 @@ diversity = (top1000.groupby(["year","sex"])
                     .apply(get_quantile_count))
 diversity = diversity.unstack("sex")
 # print diversity.head()
-# print diversity.size, type(diversity) # 262 <class 'pandas.core.frame.DataFrame'>
-diversity.plot(title="Number of popular names in top 50%"); pylab.show()
+# print diversity.size, type(diversity)
+# # 262 <class 'pandas.core.frame.DataFrame'>
+# print diversity.empty # False
+
+'''
+diversitydict = diversity.to_dict()
+# print diversitydict
+diversitydf = pd.DataFrame.from_dict(diversitydict)
+# print diversitydf
+# print diversitydf.empty # False
+# print diversitydf.describe()
+"""
+           F     M
+count    131   131
+unique    55    48
+top     [49]  [28]
+freq      15    19
+"""
+diversitydf.plot(); pylab.show()
+'''
+
+diversity.plot(
+    title="Number of popular names in top 50%"
+); pylab.show()
