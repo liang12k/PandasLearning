@@ -47,6 +47,10 @@ boys2010df = boys[boys.year==2010]
 # # cumsum (cumulative sum) of "prop" col
 # # searchsorted : returns position in cumsum,
 # #                0.5 insert needed to keep in sorted order
+# # -------------
+# # ref: http://beyondvalence.blogspot.com/2014/09/python-and-pandas-part-3-baby-names.html
+# # .searchsorted(0.5) gets sorted index of 50th percent tile; returns 116
+# # +1 --> 117 names consist of 50% of male births in 2010
 boys2010prop_cumsum = boys2010df.sort_index(by="prop",ascending=False).prop.cumsum()
 # # array is zero-indexed
 # print boysprop_cumsum[:10] # printed by index (idx not set),
@@ -56,5 +60,18 @@ boys1900df = boys[boys.year==1900]
 in1900 = boys1900df.sort_index(by="prop",ascending=False).prop.cumsum()
 # # find indices where elements should be inserted to maintain order
 # # :return indices: array of ints
+# # .searchsorted(0.5) gets sorted index of 50th percent tile; returns 24 
+# # +1 --> 25 names consist of 50% of male births in 1900
 # print in1900.searchsorted(0.5)+1 # [25]
 # print type(in1900) # <class 'pandas.core.series.Series'>
+
+# # 
+def get_quantile_count(group,q=0.5):
+    group = group.sort_index(by="prop",ascending=False)
+    return group.prop.cumsum().searchsorted(q)+1
+diversity = (top1000.groupby(["year","sex"])
+                    .apply(get_quantile_count))
+diversity = diversity.unstack("sex")
+# print diversity.head()
+# print diversity.size, type(diversity) # 262 <class 'pandas.core.frame.DataFrame'>
+diversity.plot(title="Number of popular names in top 50%"); pylab.show()
