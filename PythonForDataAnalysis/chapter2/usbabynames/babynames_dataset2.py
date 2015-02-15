@@ -36,10 +36,16 @@ table.plot(
 
 # # number of distinct names, high-to-low popularity
 # # in top 50% births
-df = boys[boys.year==2010]
-# print df # [1000 rows x 5 columns] # sorted by .prop
+boysdf = boys[boys.year==2010]
+# print boysdf # [1000 rows x 5 columns] # sorted by .prop
+# print boysdf.sort_index()[:20]
+# # Index([u'name', u'sex', u'births', u'year', u'prop'], dtype='object')
+# print boysdf.columns
+# print boysdf.index.name # None # index not set yet
 
 # # numpy : vectorized approach
 # # cumsum (cumulative sum) of "prop" col
 # # searchsorted : returns position in cumsum,
 # #                0.5 insert needed to keep in sorted order
+boysprop_cumsum = boysdf.sort_index(by="prop",ascending=False).prop.cumsum()
+print boysprop_cumsum[:10] # printed by index (idx not set),
