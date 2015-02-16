@@ -45,7 +45,7 @@ boys2010df = boys[boys.year==2010]
 # # cumsum (cumulative sum) of "prop" col
 # # searchsorted : returns position in cumsum,
 # #                0.5 insert needed to keep in sorted order
-# # -------------
+# # --------------------------------------------------------
 # # ref: http://beyondvalence.blogspot.com/2014/09/python-and-pandas-part-3-baby-names.html
 # # .searchsorted(0.5) gets sorted index of 50th percent tile; returns 116
 # # +1 --> 117 names consist of 50% of male births in 2010
@@ -74,23 +74,6 @@ diversity = diversity.unstack("sex")
 # print diversity.size, type(diversity)
 # # 262 <class 'pandas.core.frame.DataFrame'>
 # print diversity.empty # False
-
-'''
-diversitydict = diversity.to_dict()
-# print diversitydict
-diversitydf = pd.DataFrame.from_dict(diversitydict)
-# print diversitydf
-# print diversitydf.empty # False
-# print diversitydf.describe()
-"""
-           F     M
-count    131   131
-unique    55    48
-top     [49]  [28]
-freq      15    19
-"""
-diversitydf.plot(); pylab.show()
-'''
 
 diversity.plot(
     title="Number of popular names in top 50%"
