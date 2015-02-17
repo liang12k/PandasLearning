@@ -112,9 +112,23 @@ subtable = table.reindex(columns=[1910,1960,2010], level="year")
 # # split table by "sex" per "columns" each
 # # each row shows the number of "births" per last_letter of name in "columns" years
 # print subtable.head()
-print subtable.index
-print subtable.columns.values
+# print subtable.index
+# print subtable.columns.values
+# print subtable.sum()
 
 # # get only vowels from "last_letter" col
-print subtable[subtable.index.isin(["a","e","i","o","u","y"])]
+# print subtable[subtable.index.isin(["a","e","i","o","u","y"])]
 
+letter_prop = subtable/subtable.sum().astype(float)
+fig,axes = plt.subplots(2,1,figsize=(10,8))
+letter_prop["M"].plot(
+    kind="bar",
+    rot=0,ax=axes[0],
+    title="Male"
+); pylab.show()
+letter_prop["F"].plot(
+    kind="bar",
+    rot=0,ax=axes[1],
+    title="Female",
+    legend=False
+); pylab.show()
