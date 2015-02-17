@@ -1,7 +1,8 @@
 import pandas as pd
 import numpy as np
 import pylab
-from babynames_dataset1 import (top1000,boys,girls)
+import matplotlib.pyplot as plt
+from babynames_dataset1 import (top1000,boys,girls, names)
 
 """
 US Baby Names 1880-2010
@@ -75,6 +76,45 @@ diversity = diversity.unstack("sex")
 # # 262 <class 'pandas.core.frame.DataFrame'>
 # print diversity.empty # False
 
-diversity.plot(
-    title="Number of popular names in top 50%"
-); pylab.show()
+# diversity.plot(
+#     title="Number of popular names in top 50%"
+# ); pylab.show()
+
+# #
+# # change in distribution of boy names by final letter
+# # significantly changed over last 100 years
+# # 
+# # aggregate all births in full dataset by year,sex,final letter
+
+# # extract last letter from name
+getLastLetter = lambda s: s[-1]
+# # Series.map : applying element wise function; onto "name" col
+last_letters = names.name.map(getLastLetter)
+# print last_letters.head()
+# # changed orig colname "name" to "last_letters" 
+last_letters.name = "last_letters"
+# print last_letters.head()
+
+# # pivot on "years" col; "last_name" col == index
+# # each row shows the number of "births" per last_letter of name (1880-2010)
+table = names.pivot_table(
+    "births",
+    index=last_letters,
+    columns=["sex","year"],
+    aggfunc=sum
+)
+# # orig "names" DataFrame
+# print names.head()
+# print table.head()
+
+subtable = table.reindex(columns=[1910,1960,2010], level="year")
+# # select cols "columns" arg list
+# # split table by "sex" per "columns" each
+# # each row shows the number of "births" per last_letter of name in "columns" years
+# print subtable.head()
+print subtable.index
+print subtable.columns.values
+
+# # get only vowels from "last_letter" col
+print subtable[subtable.index.isin(["a","e","i","o","u","y"])]
+
