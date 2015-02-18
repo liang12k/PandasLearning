@@ -108,6 +108,6 @@ subset = total_births[["John","Harry","Mary","Marilyn"]]
 
 # # big spike in 1960
 kennysubset = total_births["Kenny"]
-kennysubset.plot(
-    subplots=True, grid=True, title="Kenny: Number of births per year"
-); # pylab.show()
+# kennysubset.plot(
+#     subplots=True, grid=True, title="Kenny: Number of births per year"
+# ); # pylab.show()

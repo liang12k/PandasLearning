@@ -23,11 +23,11 @@ girls = top1000[top1000.sex=="F"]
 """
 
 table = top1000.pivot_table("prop",index="year",columns="sex",aggfunc=sum)
-table.plot(
-    title="Sum of table1000.prop by year and sex",
-    xticks=range(1880,2020,10),
-    yticks=np.linspace(0,1.2,13),
-); # pylab.show()
+# table.plot(
+#     title="Sum of table1000.prop by year and sex",
+#     xticks=range(1880,2020,10),
+#     yticks=np.linspace(0,1.2,13),
+# ); # pylab.show()
 
 ### Note: seems like the top 1000 names have dropped off
 ### -changing times have changing popularity in names
@@ -76,6 +76,9 @@ diversity = diversity.unstack("sex")
 # # 262 <class 'pandas.core.frame.DataFrame'>
 # print diversity.empty # False
 
+# # TODO : getting TypeError 
+# # 'diversity' dataframe is empty
+# # see above: diversity.empty is False
 # diversity.plot(
 #     title="Number of popular names in top 50%"
 # ); pylab.show()
@@ -123,16 +126,32 @@ letter_prop = subtable/subtable.sum().astype(float)
 # print letter_prop["M"].head()
 # print letter_prop["F"].head()
 
-fig,axes = plt.subplots(2,1,figsize=(10,8))
+fig,axes = plt.subplots(
+    2, 1, # rows, cols
+    figsize=(10,8),
+    # sharex=False
+)
+# # these aren't working to show "M" x-axis values
+# # DataFrame.plot has "sharex" param; see below plots
+# plt.setp(axes[0].get_xticklabels(), visible=True )
+# plt.setp(axes[1].get_xticklabels(), visible=False)
+# axes[0].set_xlabel("Common x-label")
+# axes[1].set_xlabel("Common x-label")
+
 letter_prop["M"].plot(
     kind="bar",
     rot=0, ax=axes[0],
-    title="Male"
+    title="Male",
+    # x=letter_prop.index.values
+    sharex=False # both subplots show x-axis ticks
 ); # pylab.show()
 
 letter_prop["F"].plot(
     kind="bar",
     rot=0, ax=axes[1],
     title="Female",
-    legend=False
-); pylab.show()
+    legend=False,
+    sharex=False # both subplots show x-axis ticks
+); # pylab.show()
+
+plt.show()
