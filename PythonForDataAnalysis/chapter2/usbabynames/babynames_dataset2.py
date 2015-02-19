@@ -122,15 +122,15 @@ subtable = table.reindex(columns=[1910,1960,2010], level="year")
 # # get only vowels from "last_letter" col
 # print subtable[subtable.index.isin(["a","e","i","o","u","y"])]
 
-letter_prop = subtable/subtable.sum().astype(float)
+letter_prop = subtable / subtable.sum().astype(float)
 # print letter_prop["M"].head()
 # print letter_prop["F"].head()
 
-fig,axes = plt.subplots(
-    2, 1, # rows, cols
-    figsize=(10,8),
-    # sharex=False
-)
+# fig,axes = plt.subplots(
+#     2, 1, # rows, cols
+#     figsize=(10,8),
+#     # sharex=False
+# )
 # # these aren't working to show "M" x-axis values
 # # DataFrame.plot has "sharex" param; see below plots
 # plt.setp(axes[0].get_xticklabels(), visible=True )
@@ -138,20 +138,42 @@ fig,axes = plt.subplots(
 # axes[0].set_xlabel("Common x-label")
 # axes[1].set_xlabel("Common x-label")
 
-letter_prop["M"].plot(
-    kind="bar",
-    rot=0, ax=axes[0],
-    title="Male",
-    # x=letter_prop.index.values
-    sharex=False # both subplots show x-axis ticks
-); # pylab.show()
+# letter_prop["M"].plot(
+#     kind="bar",
+#     rot=0, ax=axes[0],
+#     title="Male",
+#     # x=letter_prop.index.values
+#     sharex=False # both subplots show x-axis ticks
+# ); # pylab.show()
 
-letter_prop["F"].plot(
-    kind="bar",
-    rot=0, ax=axes[1],
-    title="Female",
-    legend=False,
-    sharex=False # both subplots show x-axis ticks
-); # pylab.show()
+# letter_prop["F"].plot(
+#     kind="bar",
+#     rot=0, ax=axes[1],
+#     title="Female",
+#     legend=False,
+#     sharex=False # both subplots show x-axis ticks
+# ); # pylab.show()
 
-plt.show()
+# plt.show()
+
+
+# # normalize 'table' by year, sex
+# # select subset of letters for boy names
+# # transpose: each col is a time series
+# # reminder:
+# table = names.pivot_table(
+#     "births",
+#     index=last_letters,
+#     columns=["sex","year"],
+#     aggfunc=sum
+# )
+# 
+letter_prop = table / table.sum().astype(float)
+# # .ix[row slice, column slice]
+m_dny_ts = letter_prop.ix[["d","n","y"],"M"].T
+# print m_dny_ts.head()
+# # shows for "M","F"
+# print letter_prop.ix[["d","n","y"]].T
+m_dny_ts.plot(
+    title="'M' last_letters ['d','n',y']"
+); plt.show()
