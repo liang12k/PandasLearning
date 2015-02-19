@@ -1,0 +1,13 @@
+DataFrame.ix
+http://stackoverflow.com/questions/10665889/how-to-take-column-slices-of-dataframe-in-pandas
+.ix[row slice, column slice]
+
+Normalize
+# prop == proportions
+prop = table / table.sum().astype(float)
+
+matplotlib
+-linestyles: 
+ >http://matplotlib.org/api/artist_api.html#matplotlib.lines.Line2D.lineStyles
+-colors: 
+ >http://matplotlib.org/api/colors_api.html

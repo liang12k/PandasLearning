@@ -174,6 +174,47 @@ m_dny_ts = letter_prop.ix[["d","n","y"],"M"].T
 # print m_dny_ts.head()
 # # shows for "M","F"
 # print letter_prop.ix[["d","n","y"]].T
-m_dny_ts.plot(
-    title="'M' last_letters ['d','n',y']"
+# m_dny_ts.plot(
+#     title="'M' last_letters ['d','n',y']"
+# ); plt.show()
+
+# # Boy names that became Girl names
+# # ex: Lesley --> Leslie
+all_names = top1000.name.unique()
+# mask == filter based on top1000 'name' col
+mask = np.array(["lesl" in x.lower() for x in all_names])
+lesley_like = all_names[mask]
+# print lesley_like # ['Leslie' 'Lesley' 'Leslee' 'Lesli' 'Lesly']
+
+# # filter to just lesley_like array of names
+# # & sum 'births' grouped by 'name'
+# # to see relative frequencies
+filtered = top1000[top1000.name.isin(lesley_like)]
+# print filtered.groupby("name").births.sum()
+'''
+name
+Leslee      1082
+Lesley     35022
+Lesli        929
+Leslie    370429
+Lesly      10067
+Name: births, dtype: int64
+'''
+
+# # using lesley_like names
+# # aggregate by sex, year and normalize within year
+table = filtered.pivot_table(
+    "births",
+    index="year",
+    columns="sex",
+    aggfunc="sum"
+)
+# # .sum(axis,...), axis : {index (0), columns (1)}
+table = table.div(table.sum(1), axis=0)
+# print table.head()
+# print table.tail()
+
+table.plot(
+    style={"M":"-","F":"--"},
+    title="'M','F' for names ['Leslie' 'Lesley' 'Leslee' 'Lesli' 'Lesly']"
 ); plt.show()
