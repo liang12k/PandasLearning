@@ -1,0 +1,60 @@
+** Ignore/don't enter the '>>>'
+** : it's the represent a terminal line inp
+
+# open/close ipython in terminal
+>>> ipython
+... # enter w/o
+>>> exit()
+
+# run a module
+>>> %run _module_name_.py
+
+# inspection of object
+>>> _obj_here_?
+
+# to see the source code (everything up to the obj)
+# enter 'q' (w/o quotes) to exit view
+>>> _obj_here_??
+
+# KeyBoardInterrupt code
+# enter: < ctrl + c >
+
+# copy-pasting code (1x)
+# : copy the code piece
+>>> %paste
+... # the copied code is pasted here
+
+# copy-pasting code (2+)
+# : copy first code piece
+>>> %cpaste
+... # each paste == 1 'chunk' (and non-editable!; repaste if needed)
+...
+>>> -- # this signals the end of cpaste
+
+# reposition cursor to head of line
+# enter: < ctrl + a >
+
+# reposition cursor to end of line
+# enter: < ctrl + e >
+
+# clear ipython screen
+# enter: < ctrl + l >  # the lowercase letter 'L'
+
+# get runtime measurement
+>>> %time _run_func_
+
+# get runtime average measurement (run multiple times)
+>>> %timeit _run_func_
+
+# display history of cmds
+>>> %hist
+
+# turn on logging during console session
+>>> %logstart
+... # enter w/o
+>>> %logstop
+
+# switch into a python shell
+>>> !python
+... # enter w/o
+>>> exit()

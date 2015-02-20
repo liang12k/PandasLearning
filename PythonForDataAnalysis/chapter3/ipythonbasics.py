@@ -5,10 +5,9 @@
 # # http://www.quora.com/What-is-the-difference-between-IPython-and-Python
 
 import numpy as np
-import pprint
 
 data = {i:np.random.randn() for i in range(7)}
-# pprint.pprint(data)
+# print data
 '''
 {0: -1.2685700476508255,
  1: 0.7499336774965497,
@@ -19,12 +18,23 @@ data = {i:np.random.randn() for i in range(7)}
  6: 0.9615865146145879}
 '''
 
-b = [1,2,3]
+blist = [1,2,3]
 # # ipython reads cmd prompt input as line of text
-# # : checks '?' at EOL before eval (??) it
+# # : checks '?' at EOL (before eval <--?)
 # # http://stackoverflow.com/questions/9884764/how-does-ipythons-operator-actually-work
-# print b? # only in ipython
-# print type(b) # <type 'list'>
+# # # # #
+# # Note: 'b?' results in SyntaxError, not recognizing '?'
+# # in ipython terminal
+# # >>> from ipythonbasics import b
+# # >>> blist?
+# # Type:        list
+# # String form: [1, 2, 3]
+# # Length:      3
+# # Docstring:
+# # list() -> new empty list
+# # list(iterable) -> new list initialized from iterable's items
+# # 
+# blist? # this breaks when running
 
 def add_numbers(a,b):
     """
@@ -32,10 +42,29 @@ def add_numbers(a,b):
         :returns: sum of args
     """
     return a+b
-# print type(add_numbers)
+# add_numbers?
+'''
+In [3]: from ipythonbasics import add_numbers
+In [4]: add_numbers?
+
+Type:        function
+String form: <function add_numbers at 0x1120c7758>
+File:        /Users/kliang112/Documents/Projects_self/Pandas/PandasLearning/PythonForDataAnalysis/chapter3/ipythonbasics.py
+Definition:  add_numbers(a, b)
+Docstring:
+Add two numbers together
+:returns: sum of args
+'''
+
+# add_numbers?? # shows the source code
 
 def f(x,y,z): return (x+y)/z
 a,b,c = 5,6,7.5
-result = f(a,b,c)
-# print result # 1.46666666667
+# result = f(a,b,c); print result # 1.46666666667
 
+# a_rand = np.random.rand(100,100)
+# # >>> %timeit np.dot(a_rand,a_rand)
+'''
+The slowest run took 278.07 times longer than the fastest. This could mean that an intermediate result is being cached
+1000 loops, best of 3: 373 µs per loop
+'''
