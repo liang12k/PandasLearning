@@ -6,6 +6,11 @@
 ... # enter w/o
 >>> exit()
 
+# bookmark dir to save aliases, between sessions
+>>> %bookmark _bkmk_name_ /some/dir/path/name
+# to view all bookmarks
+>>> %bookmark -l
+
 # run a module
 >>> %run _module_name_.py
 
