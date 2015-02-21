@@ -1,0 +1,21 @@
+# debug module
+>>> run -d _module_name_.py
+...
+>>> s # lower case 's' and hit enter to step thru the %pdb debugger, into func call
+
+# debug module w set breakpoints
+>>> run -d -b_#_ _module_name_.py # replace _#_ w a line number, preset for debugging
+
+# stepping thru debugger
+>>> s # step into func call
+>>>
+>>> c # continue until debug pt, end
+>>>
+>>> n # next line
+>>>
+>>> a # show args of func call
+>>>
+>>> w # full stack of current position
+>>>
+>>> b _#_ # set breakpt at line _#_
+>>>
