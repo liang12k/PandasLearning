@@ -55,3 +55,4 @@ print ("Largest one we saw was: %s"
 # 
 
 
+import line_profiler
