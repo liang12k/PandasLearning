@@ -24,6 +24,12 @@ C-a
 # end of line
 C-e
 
+# move cursor by skipping by word
+# skip fwd
+alt + f
+# skip bkwd
+alt + b
+
 # cut: 
 # : set the end cut pt (C-space)
 # : position cursor at start pt
