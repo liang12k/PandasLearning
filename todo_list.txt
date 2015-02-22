@@ -1,0 +1,9 @@
+TODO:
+-----
+follow community naming standard:
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+^ replace all the imports in /PandasLearning to the style above
+-[Feb 09]: getting permission denied w grep, sed in terminal

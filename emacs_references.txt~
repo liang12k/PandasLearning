@@ -1,0 +1,13 @@
+
+http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/
+
+C == ctrl
+
+# quit
+C-x C-c
+
+# save
+C-x C-s
+
+# position cursor by mouse click; similar to iTerm2
+alt + <mouse click at position>
