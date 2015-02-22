@@ -19,13 +19,3 @@
 >>>
 >>> b _#_ # set breakpt at line _#_
 >>>
-
-# # %timeit, %time
-# # diffs: http://stackoverflow.com/questions/8619167/inconsistency-between-time-and-timeit-in-ipython
-# # %time : runs statement once, reporting excution time
-# # %timeit: temporarily turns off garbage collection during timing (default),
-# #          run number of times (default n=1,000,000)
-# #          ** more accurate b/c of numerous runs
-# #
-# # Wall time: start-to-completion task time
-# #

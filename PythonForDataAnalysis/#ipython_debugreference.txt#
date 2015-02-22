@@ -1,7 +1,0 @@
-# debug module
->>> run -d _module_name_.py
-...
->>> s # lower case 's' and hit enter to step thru the %pdb debugger, into func call
-
-# debug module w set breakpoints >>> run -d -b_#_ _module_name_.py #
-replace _#_ w a line number, preset for debuggin
