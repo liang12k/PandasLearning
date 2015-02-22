@@ -25,8 +25,19 @@ method2 = [x for x in strings if x[:3] == 'foo']
 # Wall time: 11.9 ms  
 #
 # # %timieit method2
-# 
+# 10000000 loops, best of 3: 47.8 ns per loop
 # 
 # # %time method2
 # CPU times: user 5 ms, sys: 1 ms, total: 6 ms
 # Wall time: 10 ms
+
+xstr = "foobar"
+ystr = "foo"
+# #
+# # %timeit xstr.startswith(ystr)
+# 1000000 loops, best of 3: 416 ns per loop
+#
+# # %timeit xstr[:3] == ystr
+# 10000000 loops, best of 3: 188 ns per loop
+# 
+
