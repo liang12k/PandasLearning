@@ -11,11 +11,6 @@
 # to view all bookmarks
 >>> %bookmark -l
 
-# reload import namespace
-# python has "load-once" module system
->>> import some_lib
->>> reload(some_lib) # get fresh copy of 'some_lib'
-
 # run a module
 >>> %run _module_name_.py
 

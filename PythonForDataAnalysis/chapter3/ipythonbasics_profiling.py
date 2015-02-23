@@ -11,6 +11,9 @@ cProfile: executes program, arbitrary code block
 
 ------------------------
 generally-
+%prun - good for macro profiling
+
+syntax:
 %prun _method_()
 
 using output 'filtering'
@@ -55,4 +58,10 @@ print ("Largest one we saw was: %s"
 # 
 
 
-import line_profiler
+# # there's an import error
+# # even though python imports it, 
+# # ipython doesn't see it
+# import line_profiler
+# # 
+# # %lprun # throws error
+# # 
