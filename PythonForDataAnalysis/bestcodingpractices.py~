@@ -1,0 +1,6 @@
+#
+# keep relevant objects, data alive
+# 
+# 1. execute w/e code in main() as is directly in module's global namespace
+# 2. if left in the if __name__ == __main__
+# 
