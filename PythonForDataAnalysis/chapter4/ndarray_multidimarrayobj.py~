@@ -1,0 +1,10 @@
+"""
+ndarray : N-dimensional array obj
+-fast, flexible container for large data sets in Python
+
+arrays: perform mathematical operations on whole blocks
+of data using similar syntax to equivalent operations 
+between scalar elements
+"""
+
+import numpy as np
