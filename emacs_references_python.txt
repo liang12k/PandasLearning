@@ -1,0 +1,12 @@
+# commenting lines, blocks
+# http://www.gnu.org/software/emacs/manual/html_node/emacs/Comment-Commands.html
+
+# commenting a block
+1. select the region, start by: ctrl + <space>
+2. highlight the area to comment using arrow keys
+3. alt to bring up 'M-x' in shell
+4. enter ';' w/o the quotes
+
+# uncommenting a block
+>repeat steps 1-3
+4. enter 'comment-dwim' w/o the quotes
