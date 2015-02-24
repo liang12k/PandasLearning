@@ -1,0 +1,14 @@
+
+General configurations
+
+Themes enabling:
+----------------
+1. place theme-el file into: ~/.emacs.d/themes/
+2. test theme out in emacs viewer, in terminal enter (w/o quotes): 'emacs'
+3. enter alt+x to get: M-x
+4. enter load-theme then enter, to get: M-x load-theme
+5. enter the theme to view, for ex. 'Amelie' theme: M-x load-theme Amelie
+6. enter (w/o quotes) all the 'y', 'yes' needed to enable the theme; this writes to the emacs init.el
+7. in the ~/.emacs.d/init.el, enter the line: (load-theme '_theme_name_here_ t)
+   this enables the theme for future usage
+

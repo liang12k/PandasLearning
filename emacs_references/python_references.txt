@@ -1,0 +1,13 @@
+
+# general references for pythong using emacs 
+
+# commenting lines, blocks
+# http://www.gnu.org/software/emacs/manual/html_node/emacs/Comment-Commands.html
+
+# commenting a block
+1. select the region, highlight by using shift and arrow keys
+2. alt to bring up 'M-x' in shell
+3. enter ';' w/o the quotes
+
+# uncommenting a block
+>repeat steps 1-3

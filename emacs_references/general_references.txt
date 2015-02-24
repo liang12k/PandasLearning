@@ -1,0 +1,39 @@
+
+General references for emacs, keyboard shortcuts and such
+
+http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/
+
+C == ctrl
+space == spacebar
+
+# quit
+C-x C-c
+
+# save (w/o asking)
+C-x C-s
+
+# position cursor by mouse click; similar to iTerm2
+alt + <mouse click at position>
+
+# top of file
+ESC <
+# bottom of file
+ESC >
+
+# beginning of line
+C-a
+
+# end of line
+C-e
+
+# move cursor by skipping by word
+# skip fwd
+alt + f
+# skip bkwd
+alt + b
+
+# cut: 
+C-k
+
+# paste
+C-y
