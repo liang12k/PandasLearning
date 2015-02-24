@@ -7,7 +7,7 @@ space == spacebar
 # quit
 C-x C-c
 
-# save
+# save (w/o asking)
 C-x C-s
 
 # position cursor by mouse click; similar to iTerm2
@@ -31,10 +31,7 @@ alt + f
 alt + b
 
 # cut: 
-# : set the end cut pt (C-space)
-# : position cursor at start pt
-# : cut (C-w)
-C-space C-w
+C-k
 
 # paste
 C-y
