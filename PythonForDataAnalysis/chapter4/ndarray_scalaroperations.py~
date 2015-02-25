@@ -1,0 +1,7 @@
+"""
+vectorization: batch operations on data w/o for-loops
+               arithmetic operations betw equal sized
+               arrays applies operation element wise
+"""
+
+import numpy as np
