@@ -6,3 +6,8 @@ git commit -m "msg here"
 
 3. do a push
 git push
+
+------------
+view total commit logs for the day
+ref: http://stackoverflow.com/questions/8016645/git-list-all-files-added-modified-on-a-day-or-week-month
+git log -since="1 day ago"
