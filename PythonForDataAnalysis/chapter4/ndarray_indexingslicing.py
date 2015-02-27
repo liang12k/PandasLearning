@@ -33,4 +33,38 @@ arr_slice[1] = 12345
 # arr_slice # array([    5, 12345,     7])
 # arr # array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 
+# # 2D array
+arr2d = np.array([
+    [1,2,3],
+    [4,5,6],
+    [7,8,9]
+])
+# arr2d[2] # array([7, 8, 9])
+# arr2d[0][2] == arr2d[0,2] # 3
+
+# # multi-dimensional arrays
+# 2x2x3 array
+arr3d = np.array([
+    [[1,2,3],[4,5,6]],
+    [[7,8,9],[10,11,12]]
+])
+# arr3d.shape # (2, 2, 3)
+# arr3d
+# array([[[ 1,  2,  3],
+#         [ 4,  5,  6]],
+#        [[ 7,  8,  9],
+#         [10, 11, 12]]])
+
+# arr3d
+# array([[1, 2, 3],
+#        [4, 5, 6]])
+# arr3d.shape # (2, 3)
+
+# assigning scalar, arrays to arr3d[idx]
+old_values = arr3d[0].copy() # keep orig arr3d
+arr3d[0] = 42
+# array([[[42, 42, 42],
+#         [42, 42, 42]],
+#        [[ 7,  8,  9],
+#         [10, 11, 12]]])
 
