@@ -1,6 +1,8 @@
 """
 getting a subset of data, individual elements
 
+slice: selects a range of elems along an axis
+
 slices on arrays are views on original array
 : any changes done on view --> changes original array
 : ^ think mutability of lists**
@@ -27,9 +29,10 @@ arr_slice[:] = 64
 # arr # array([ 0,  1,  2,  3,  4, 64, 64, 64,  8,  9]
 
 # # trying out the ndarray.copy for slicing
-arr = np.arange(10)
-arr_slice = arr[5:8].copy()
-arr_slice[1] = 12345
+# # commenting out to avoid affecting rest of exercises
+# arr = np.arange(10)
+# arr_slice = arr[5:8].copy()
+# arr_slice[1] = 12345
 # arr_slice # array([    5, 12345,     7])
 # arr # array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 
@@ -68,3 +71,51 @@ arr3d[0] = 42
 #        [[ 7,  8,  9],
 #         [10, 11, 12]]])
 
+# old_values
+# array([[1, 2, 3],
+#        [4, 5, 6]])
+
+arr3d[0] = old_values
+# arr3d
+# array([[[ 1,  2,  3],
+#         [ 4,  5,  6]],
+#        [[ 7,  8,  9],
+#         [10, 11, 12]]])
+
+# arr3d[1,0] == arr3d[1][0] # array([7, 8, 9])
+
+# # indexing with slices
+# arr[1:6] # array([ 1,  2,  3,  4, 64])
+
+# arr2
+# array([[1, 2, 3],
+#        [4, 5, 6],
+#        [7, 8, 9]])
+# 
+# arr2[:2] # reminder: arr2 was a 3x3 array
+# array([[1, 2, 3],
+#        [4, 5, 6]])
+
+# arr2d[:2,:1]
+# array([[1],
+#        [4]])
+# 
+# arr2d[:2,1:]
+# array([[2, 3],
+#        [5, 6]])
+
+# # slicing by mixing int indexes and slices
+# # receive lower dimensional slices
+# arr2d[1,:2] # array([4, 5])
+# arr2d[2,:1] # array([7])
+# 
+# arr2d[:,:1] # ':' represents taking the whole axis
+# array([[1],
+#        [4],
+#        [7]])
+
+arr2d[:2,:1] = 0 # assigning to entire slice area
+# arr2d
+# array([[0, 2, 3],
+#        [0, 5, 6],
+#        [7, 8, 9]])
