@@ -1,0 +1,7 @@
+
+universal function (ufunc)
+--------------------------
+-performs element wise operations on data in ndarrays
+-aka: fast vectorized wrappers for simple functions
+-take 1+ scalar values --> product 1+ scalar results
+
