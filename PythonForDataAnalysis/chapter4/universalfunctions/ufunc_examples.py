@@ -45,4 +45,25 @@ np.maximum(x,y)
 
 #
 # # ufunc returning multiple arrays
-# # ex: np.modf 
+# # 
+# # ex:
+# # np.modf - returns fractal and int
+# #           part of floating point array
+# # ^ : floating number --(separate)-->
+# #     whole number array, decimal array
+modfarr=np.array(
+    [2.419,-9.2356,-0.015926,50.00053,-1947.95721]
+)
+np.modf(modfarr)
+# # note: the whole number is in 2nd array
+# #       remaining decimals (fractals) in 1st array
+#
+# (
+#     array(
+#         [  4.19000000e-01,  -2.35600000e-01,
+#            -1.59260000e-02, 5.30000000e-04,
+#            -9.57210000e-01]),
+#     array([    2.,    -9.,
+#                -0.,    50.,
+#                -1947.])
+# )
