@@ -109,3 +109,22 @@ arr[[1,5,7,2]][:,[0,3,1,2]]
 #     [ 8, 11,  9, 10]  # [ 8,  9, 10, 11]
 # ])
 
+# # np.ix_ method converts two 1D int arrays
+# # to an indexer that selects square region
+# # aka: doing arr[[1,5,7,2]][:,[0,3,1,2]] easier
+# 
+# arr[np.ix_([1,5,7,2],[0,3,1,2])] == arr[[1,5,7,2]][:,[0,3,1,2]]
+# array([
+#     [ True,  True,  True,  True],
+#     [ True,  True,  True,  True],
+#     [ True,  True,  True,  True],
+#     [ True,  True,  True,  True]],
+# dtype=bool)
+#
+arr[np.ix_([1,5,7,2],[0,3,1,2])]
+# array([
+#     [ 4,  7,  5,  6],
+#     [20, 23, 21, 22],
+#     [28, 31, 29, 30],
+#     [ 8, 11,  9, 10]
+# ])
