@@ -67,3 +67,30 @@ np.modf(modfarr)
 #                -0.,    50.,
 #                -1947.])
 # )
+
+arr2=modfarr
+# array(
+#     [  2.41900000e+00,
+#        -9.23560000e+00,
+#        -1.59260000e-02,
+#        5.00005300e+01,
+#        -1.94795721e+03]
+# )
+
+np.abs(arr2) # absolute value of all vals
+
+np.square(arr2) # == arr**2, square all elements
+
+np.log(arr2) # log on valid values
+# array(
+#     [ 0.88335423,
+#       nan,
+#       nan,
+#       3.91203361,
+#       nan]
+# )
+
+np.sign(arr2) # sign of each element (pos=1,zero=0,neg=-1)
+# array([ 1., -1., -1.,  1., -1.])
+
+np.ceil(arr2) # get ceil of scalar elements
