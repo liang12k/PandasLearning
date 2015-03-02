@@ -33,7 +33,8 @@ result = np.where(cond, xarr, yarr)
 # array([ 1.1,  2.2,  1.3,  1.4,  2.5])
 
 # rand (4,4) array
-arr=np.random.randn(4,4)
+arr=np.random.clear
+randn(4,4)
 # all vals > 0 output 2, else -2
 np.where(arr>0,2,-2)
 # all vals > 0 output 2, else the elem as-is
