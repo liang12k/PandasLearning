@@ -20,4 +20,10 @@ arr.mean() # == np.mean(arr)
 arr.sum()
 # can do individual row opers: arr[row_idx].sum()
 
+# get single array of mean by:
+arr.mean(axis=0 )  # col
+arr.mean(axis=1 )  # row
+arr.mean(axis=-1)  # last axis (in this case, 'x')
+                   # note: y is the 1st (0th idx)
 
+                   
