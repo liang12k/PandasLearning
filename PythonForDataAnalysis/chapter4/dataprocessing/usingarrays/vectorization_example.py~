@@ -1,0 +1,5 @@
+"""
+vectorization: 
+"""
+
+import numpy as np
