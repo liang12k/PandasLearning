@@ -1,0 +1,9 @@
+"""
+np.any, np.all similar to python
+"""
+
+import numpy as np
+
+arr=randn(100)
+(arr>0).sum() # get number of positive values
+
