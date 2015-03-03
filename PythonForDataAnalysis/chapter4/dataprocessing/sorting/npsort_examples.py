@@ -1,5 +1,13 @@
 """
 sorting: in-place
+
+http://docs.scipy.org/doc/numpy/reference/generated/numpy.sort.html
+
+np.sort(a, axis=-1, kind='quicksort', order=None)
+: a = array
+  axis = (0:cols),(1:rows),(-1:last axis)
+  kind = {‘quicksort’, ‘mergesort’, ‘heapsort’}
+  order = list of what to order by (~schema, dtypes)
 """
 
 import numpy as np
