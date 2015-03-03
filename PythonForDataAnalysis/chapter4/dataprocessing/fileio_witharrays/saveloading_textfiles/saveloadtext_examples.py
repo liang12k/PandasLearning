@@ -18,5 +18,7 @@ arr=np.loadtxt("array_ex.txt",delimiter=",")
 # ])
 
 newarr=np.append(arr,[11.,22.,33.,44.,55.])
+# # note: this is saved as a 1D array
+# #       newarr.reshape as needed
 np.savetxt("array_ex_appendrow.txt",newarr)
 np.loadtxt("array_ex_appendrow.txt")
