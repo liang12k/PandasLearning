@@ -119,11 +119,53 @@ q,r=qr(mat)
          # elements of a square matrix as a 1D array,
          # or convert a 1D array into a square matrix
          # with zeros on the off-diagonal
-# dot - Matrix multiplication
+         #
+         # can create a simple diaag array np.diag((...))
+         # w ... #s in the diagonal
+         # 
+#
+# dot - matrix multiplication
+#
 # trace - get the sum of the diagonal elements
+#
 # det - get the matrix determinant
+        # http://goo.gl/06H0cE
+        # |A| == determinant of A; syntax, abs value
+        #
+        #  A  = [[a,b],[c,d]]
+        # |A| = a*d - b*c
+        # 
+        #  A  = [[a,b,c],
+        #        [d,e,f],
+        #        [g,h,i]] # 3x3
+        # |A| = a*(ei-fh) - b*(di-fg) - c*(dh-eg)
+        #
+        
 # eig - get the eigenvalues and eigenvectors
         # of a square matrix
+        # http://goo.gl/3dmWHE
+        # 
+        # A     = [[2,-4],[-1,-1]]
+        # p(eA) = det[[2-e,-4],[-1,-1-e]] # num-e on diag
+        #       = (2-e)*(-1-e)-(-4)*(-1)
+        #       = e^2 - e - 6
+        #       = (e-3)(e+2) # factorization
+        #       : eigenvalues == 3,-2
+        #
+        # to get eigenvectors:
+        # plugging eigenvalues back in to p(eA) structure
+        # evct(3) = [[2-3, -4],[-1,-1-(3)]][v1,v2]
+        #         = [[-1,  -4],[-1,   - 4]][v1,v2]
+        #         = -v1 + -4v2 = 0; -v1 + - 4v2 = 0
+        #         : let v2=t, then v1=-4
+        #         : eigenvector(3) == [-4, 1]
+        #
+        # evct(-2)= [[2-(-2), -4],[-1,-1-(-2)]][v1,v2]
+        #         = [[4,      -4],[-1,      1]][v1,v2]
+        #         = 4v1 + -4v2 = 0; -v1 + v2 = 0
+        #         : let v2=t, then v1=1
+        #         : eigenvector(-2) == [1, 1]
+        
 # inv - get the inverse of a square matrix
 # pinv - get the Moore-Penrose pseudo-inverse
         # inverse of a square matrix qr Compute the
