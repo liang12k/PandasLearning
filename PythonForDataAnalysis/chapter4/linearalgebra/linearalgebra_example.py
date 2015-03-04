@@ -93,7 +93,22 @@ mat.dot(inv(mat))
 # ])
 # 
 # # get qr factorization of matrix
-# # -factor a matrix as a product of 2 matrices (Q,R)
-# # 
+# # :graham-schmidt process
+# # -http://goo.gl/TIqO5n
+# # -factor a matrix as a product of 2 matrices Q,R
+# #
+# # [Q,R] = qr(A,0)
+# #         A is a mxn matrix,
+# #         Q is mxn orthogonal,
+# #         R is nxn upper triangular
 #
 q,r=qr(mat)
+# this output should have:
+# q=[q1,q2,q3....] # q.T.dot(q) == I; identity
+# r is an upper triangular, all 0s below
+# r=[
+#     [#, #, #, ...],
+#     [0, #, #, ...],
+#     [0, 0, #, ...],
+# ]
+
