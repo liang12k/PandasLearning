@@ -192,6 +192,11 @@ q,r=qr(mat)
         # a = np.array([[3,1],[1,2]])
         # b = np.array([9,8])
         # x = np.linalg.solve(a,b) # == array([2.,3.])
+        #
 
 # lstsq - get the least-squares solution to y = Xb
+          # : linear regression
+          # - calc linear line that best fits data points
+          #   solves for 'x' of ax=b using Euclidean 2-norm
+          # http://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.lstsq.html
           # 
