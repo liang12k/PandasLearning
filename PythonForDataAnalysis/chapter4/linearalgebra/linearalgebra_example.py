@@ -102,6 +102,7 @@ mat.dot(inv(mat))
 # #         Q is mxn orthogonal,
 # #         R is nxn upper triangular
 #
+# # **TODO** -- understand QR factorization
 q,r=qr(mat)
 # this output should have:
 # q=[q1,q2,q3....] # q.T.dot(q) == I; identity
@@ -112,3 +113,22 @@ q,r=qr(mat)
 #     [0, 0, #, ...],
 # ]
 
+# # numpy.linalg funcs
+# 
+# diag - Return the diagonal (or off-diagonal)
+         # elements of a square matrix as a 1D array,
+         # or convert a 1D array into a square matrix
+         # with zeros on the off-diagonal
+# dot - Matrix multiplication
+# trace - get the sum of the diagonal elements
+# det - get the matrix determinant
+# eig - get the eigenvalues and eigenvectors
+        # of a square matrix
+# inv - get the inverse of a square matrix
+# pinv - get the Moore-Penrose pseudo-inverse
+        # inverse of a square matrix qr Compute the
+        # QR decomposition
+# svd - get the singular value decomposition (SVD)
+# solve - Solve the linear system Ax = b for x,
+        # where A is a square matrix
+# lstsq - get the least-squares solution to y = Xb
