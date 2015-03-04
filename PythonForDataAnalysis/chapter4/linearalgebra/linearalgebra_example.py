@@ -167,10 +167,31 @@ q,r=qr(mat)
         #         : eigenvector(-2) == [1, 1]
         
 # inv - get the inverse of a square matrix
+
 # pinv - get the Moore-Penrose pseudo-inverse
-        # inverse of a square matrix qr Compute the
-        # QR decomposition
+        # inverse of a square matrix
+
+# qr - get the QR decomposition
+       # TODO : explanation!
+
 # svd - get the singular value decomposition (SVD)
+        # http://goo.gl/B05uUl (kind-of)
+        # http://goo.gl/ZKoDWz (need to simplify down)
+        # ^ pdf in dir
+
 # solve - Solve the linear system Ax = b for x,
         # where A is a square matrix
+        #
+        # solves system of equations
+        # http://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.solve.html
+        #
+        # a1 : 3*x1 + x2   = 9
+        # a2 : x1   + x2*2 = 8
+        #   - get 'x' for a.dot(x) == b
+        #
+        # a = np.array([[3,1],[1,2]])
+        # b = np.array([9,8])
+        # x = np.linalg.solve(a,b) # == array([2.,3.])
+
 # lstsq - get the least-squares solution to y = Xb
+          # 
