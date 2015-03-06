@@ -59,3 +59,23 @@ np.abs(walk)>=10
 # # axis=1: cmp rows - only 4 rows
 # np.argmax(arr,axis=1) # array([2, 2, 2, 2])
 
+# # simulating many rand walks at once
+rwalks=5000
+nsteps=1000
+# size configures array shape to 5000x1000
+draws=np.random.randint(0,2,size=(rwalks,nsteps))
+steps=np.where(draws>0,1,-1)
+walks=steps.cumsum(1) # cumsum by rows
+walks.min(); walks.max()
+# calculate min crossing time to 30 or -30
+# **note: not all 5000 reach these numbers!
+# -using np.any method gets bool array if cond met
+hits30=(np.abs(walks)>=30).any(1) # any of the rows
+hits30.sum() # total that hits 30 or -30
+# using hits30 bool array as a 'filter' mask
+# to take only rows that hit 30
+# then .argmax gets the index where the hit happens
+crossingtimes=(np.abs(walks[hits30])>=30).argmax(1)
+crossingtimes.mean() # general index of hit
+
+
