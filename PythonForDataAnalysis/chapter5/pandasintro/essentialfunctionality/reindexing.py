@@ -3,6 +3,13 @@
            create new object with data conformed
            to a new index
          - 'method' arg to handle interpolation
+
+interpolation w blank values
+http://peltiertech.com/mind-the-gap-charting-empty-cells/
+-tl;dr: best to leave empty values as is
+        -setting as 0s is deceptable as this 
+         is a value
+        -if plotting: 1. skip it, 2. leave as NaN
 """
 
 import pandas as pd
@@ -169,5 +176,5 @@ frame.ix[
  'fill_value': 'Substitute value to use when introducing missing data by reindexing',
  'index': 'New sequence to use as index. Can be Index instance or any other sequence-like Python data structure. An Index will be used exactly as is without any copying',
  'level': 'Match simple Index on level of MultiIndex, otherwise select subset of',
- 'limit': 'When forward- or backfilling, maximum size gap to fill',
+ 'limit': 'When forward- or backfilling, maximum size gap to fill (how many to fill instead of all)',
  'method': 'Interpolation (fill) method, see Table 5-4 for options. (ffill,bfill)'}
