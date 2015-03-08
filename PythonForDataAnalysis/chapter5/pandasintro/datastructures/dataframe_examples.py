@@ -257,3 +257,15 @@ frame2.values
 #
 
 # # Table 5-1
+# # some wrangling on the table's text to
+# # put it into a dataframe
+#
+{'Chapter5_Table5-4':{'2D ndarray': 'A matrix of data, passing optional row and column labels',
+                       'Another DataFrame': "The DataFrame's indexes are used unless different ones are passed",
+                       'List of lists or tuples': "Treated as the '2D ndarray' case",
+                       'NumPy MaskedArray': "Like the '2D ndarray' case except masked values become NA/missing in the DataFrame result",
+                       'NumPy structured/record array': "Treated as the 'dict of arrays' case",
+                       'array dict of Series': "Each value becomes a column. Indexes from each Series are unioned together to form the result's row index if no explicit index is passed.",
+                       'dict of arrays, lists, or tuples': 'Each sequence becomes a column in the DataFrame. All sequences must be the same length.',
+                       'dict of dicts': "Each inner dict becomes a column. Keys are unioned to form the row index as in the 'dict of Series' case.",
+                       'list of dicts or Series': "Each item becomes a row in the DataFrame. Union of dict keys or Series indexes become the DataFrame's column labels"}}
