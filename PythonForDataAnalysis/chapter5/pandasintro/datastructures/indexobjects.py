@@ -42,10 +42,26 @@ frame3
 "Ohio" in frame3.columns, 2003 in frame3.index
 # True , False
 
+# # 
 # # Table5-2
+# # main Index objects in pandas
+# # 
 {'DatetimeIndex': "Stores nanosecond timestamps (represented using NumPy's datetime64 dtype).",
  'Index': 'The most general Index object, representing axis labels in a NumPy array of Python objects.',
  'Int64Index': 'Specialized Index for integer values.',
  'MultiIndex': "'Hierarchical' index object representing multiple levels of indexing on a single axis. Can be thought of as similar to an array of tuples.",
  'PeriodIndex': 'Specialized Index for Period data (timespans).'}
 
+# # 
+# # Table5-3
+# # Index methods and properties
+# # -note: Index objects behave array-like, set like
+# # 
+{'append': 'Concatenate with additional Index objects, producing a new Index diff Compute set difference as an Index',
+ 'drop': 'Compute new index by deleting passed values',
+ 'insert': 'Compute new Index by inserting element at index i',
+ 'intersection': 'Compute set intersection',
+ 'is_monotonic': 'Returns True if each element is greater than or equal to the previous element is_unique Returns True if the Index has no duplicate values',
+ 'isin': 'Compute boolean array indicating whether each value is contained in the passed collection delete Compute new Index with element at index i deleted',
+ 'union': 'Compute set union',
+ 'unique': 'Compute the array of unique values in the Index'}
