@@ -5,6 +5,12 @@ DataFrame: tabular, spreadsheet-like data structure
            has row,col index
            kind of dict of Series (sharing same idx)
            ** data stored as 1D or 2D blocks
+
+-note: cols returned when indexing is a view on
+       dataframe, not a copy.
+       in-place modifications to Series reflected in
+       the dataframe. 
+       Series.copy method explicitly copies Series
 """
 
 import numpy as np
@@ -143,4 +149,111 @@ frame2
  # four   2001  Nevada  2.4  -1.5   False
  # five   2002  Nevada  2.9  -1.7   False
 #
- 
+# # deleting cols
+del frame2["eastern"]
+frame2
+ #        year   state  pop  debt
+ # one    2000    Ohio  1.5   NaN
+ # two    2001    Ohio  1.7  -1.2
+ # three  2002    Ohio  3.6   NaN
+ # four   2001  Nevada  2.4  -1.5
+ # five   2002  Nevada  2.9  -1.7
+#
+# # deleting multiple cols using .drop
+# # -in place deletion and on rows
+# #  http://stackoverflow.com/questions/13411544/delete-column-from-pandas-dataframe
+# frame2.drop(["state","debt"],inplace=True,axis=1)
+# frame2
+ #        year  pop
+ # one    2000  1.5
+ # two    2001  1.7
+ # three  2002  3.6
+ # four   2001  2.4
+ # five   2002  2.9
+#
+
+# # creating dataframe from nested dicts
+# # -keys are indices
+pop={
+    "Nevada":{
+        2001:2.4,
+        2002:2.9
+    },
+    "Ohio":{
+        2000:1.5,
+        2001:1.7,
+        2002:3.6
+    },
+}
+frame3=pd.DataFrame(pop)
+frame3.index.name="year"
+frame3
+ #       Nevada  Ohio
+ # year
+ # 2000     NaN   1.5
+ # 2001     2.4   1.7
+ # 2002     2.9   3.6
+#
+# # transpose dataframe
+frame3.T
+# year    2000  2001  2002
+# Nevada   NaN   2.4   2.9
+# Ohio     1.5   1.7   3.6
+#
+
+# # dict of series treated same way as nested dicts
+pdata={
+    "Ohio":frame3["Ohio"][:-1],
+    "Nevada":frame3["Nevada"][:2]
+}
+pd.DataFrame(pdata)
+ #       Nevada  Ohio
+ # year
+ # 2000     NaN   1.5
+ # 2001     2.4   1.7
+#
+# # setting in dataframe index,cols names
+frame3.index.name="year"
+frame3.columns.name="state"
+frame3
+# state  Nevada  Ohio
+# year
+# 2000      NaN   1.5
+# 2001      2.4   1.7
+# 2002      2.9   3.6
+frame3.T
+# year    2000  2001  2002
+# state
+# Nevada   NaN   2.4   2.9
+# Ohio     1.5   1.7   3.6
+#
+# # dataframe.values returns dataframe's data
+# # as 2D ndarray
+frame3.values
+# array([
+#     [ nan,  1.5],
+#     [ 2.4,  1.7],
+#     [ 2.9,  3.6]
+# ])
+#
+# # different dtypes in dataframe's cols
+# # dtype of the .values array will be
+# # chosen to accomdate all the cols
+frame2
+ #         year   state  pop  debt
+ # one     2000    Ohio  1.5   NaN
+ # two     2001    Ohio  1.7  -1.2
+ # three   2002    Ohio  3.6   NaN
+ # four    2001  Nevada  2.4  -1.5
+ # five    2002  Nevada  2.9  -1.7
+frame2.values
+# array([
+#     [2000, 'Ohio', 1.5, nan],
+#     [2001, 'Ohio', 1.7, -1.2],
+#     [2002, 'Ohio', 3.6, nan],
+#     [2001, 'Nevada', 2.4, -1.5],
+#     [2002, 'Nevada', 2.9, -1.7]
+# ],dtype=object)
+#
+
+# # Table 5-1
