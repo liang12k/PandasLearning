@@ -92,6 +92,7 @@ obj3bfill=obj3.reindex(range(6),method="bfill")
 # #
 # # Table5-4
 # # .reindex 'method' (interpolation) arg options
+# # 
 # ffill, pad - fill, carry values forward
 #              taking latest value before blank NaN
 #              value, plug that into NaN
@@ -99,3 +100,74 @@ obj3bfill=obj3.reindex(range(6),method="bfill")
 #                   taking latest value after blank NaN
 #                   value, plug that into NaN
 
+# # reindex DataFrames
+# # -can alter row, col, or both
+# # -by default, rows are reindexed in result
+frame=pd.DataFrame(
+    np.arange(9).reshape((3,3)),
+    index=["a","c","d"],
+    columns=["Ohio","Texas","California"]
+)
+frame
+ #    Ohio  Texas  California
+ # a     0      1           2
+ # c     3      4           5
+ # d     6      7           8
+#
+from string import ascii_lowercase
+frame2=frame.reindex(
+    [_ for _ in ascii_lowercase[:4]]
+)
+# ^ same as:
+# frame2=frame.reindex(["a","b","c","d"])
+frame2
+#    Ohio  Texas  California
+# a     0      1           2
+# b   NaN    NaN         NaN
+# c     3      4           5
+# d     6      7           8
+#
+# # reindex using 'columns' keyword
+states=["Texas","Utah","California"]
+# 'Utah' col doesn't exist, col will be NaN values
+frame.reindex(columns=states)
+#    Texas  Utah  California
+# a      1   NaN           2
+# c      4   NaN           5
+# d      7   NaN           8
+#
+# # ^ reindex in single call
+# #   where interpolation happens row-wise (axis=0)
+frame.reindex(
+    index=frame2.index,
+    method="ffill",
+    columns=states
+)
+   #    Texas  Utah  California
+   # a      1   NaN           2
+   # b      1   NaN           2
+   # c      4   NaN           5
+   # d      7   NaN           8
+#
+# # note: succinct label-indexing reindex
+frame.ix[
+    frame2.index,
+    states
+]
+   #    Texas  Utah  California
+   # a      1   NaN           2
+   # b    NaN   NaN         NaN
+   # c      4   NaN           5
+   # d      7   NaN           8
+#
+
+# #
+# # Table5-5
+# # reindex function args
+# #
+{'copy': 'Do not copy underlying data if new index is equivalent to old index. True by default (i.e. always copy data).',
+ 'fill_value': 'Substitute value to use when introducing missing data by reindexing',
+ 'index': 'New sequence to use as index. Can be Index instance or any other sequence-like Python data structure. An Index will be used exactly as is without any copying',
+ 'level': 'Match simple Index on level of MultiIndex, otherwise select subset of',
+ 'limit': 'When forward- or backfilling, maximum size gap to fill',
+ 'method': 'Interpolation (fill) method, see Table 5-4 for options. (ffill,bfill)'}
