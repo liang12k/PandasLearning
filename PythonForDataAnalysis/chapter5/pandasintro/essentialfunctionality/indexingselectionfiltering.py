@@ -75,3 +75,27 @@ data[["three","one"]]
 # New York     14   12
 #
 # # special cases for indexing
+data[:2] # slicing
+#           one  two  three  four
+# Ohio        0    1      2     3
+# Colorado    4    5      6     7
+data[data["three"]>5] # filtering (mask)
+#           one  two  three  four
+# Colorado    4    5      6     7
+# Utah        8    9     10    11
+# New York   12   13     14    15
+#
+# # indexing with bool DataFrame
+data<5
+#             one    two  three   four
+# Ohio       True   True   True   True
+# Colorado   True  False  False  False
+# Utah      False  False  False  False
+# New York  False  False  False  False
+data[data<5]=0 # assigning 0 to all True vals
+#           one  two  three  four
+# Ohio        0    0      0     0
+# Colorado    0    5      6     7
+# Utah        8    9     10    11
+# New York   12   13     14    15
+
