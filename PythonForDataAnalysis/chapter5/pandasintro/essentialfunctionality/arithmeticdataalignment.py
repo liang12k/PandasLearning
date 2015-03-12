@@ -218,3 +218,20 @@ frame.T.add(
 # f NaN   NaN     NaN    NaN   NaN
 #
 # broadcasting over cols, matching on rows
+series3=frame["d"]
+# only col 'd', slicing --> is a DataFrame obj!
+series3
+# Utah       1
+# Ohio       4
+# Texas      7
+# Oregon    10
+# Name: d, dtype: float64
+frame.sub(series3,axis=0)
+# operating on all cols using row index's values
+# and broadcast across
+#
+#         b  d  e
+# Utah   -1  0  1
+# Ohio   -1  0  1
+# Texas  -1  0  1
+# Oregon -1  0  1
