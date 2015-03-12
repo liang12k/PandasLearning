@@ -7,6 +7,11 @@ arithmetic between objects with different indexes
 internal data alignment introduces NA values in
 indicies that don't overlap
 -missing values propagate in arithmetic operations
+
+arithmethic operations between DataFrame and
+Series is well-defined (unambiguous)
+: definition provides unique result for each input
+- ref: http://math.stackexchange.com/questions/606917/well-defined-function-what-does-it-mean
 """
 
 import numpy as np
@@ -128,3 +133,88 @@ df1.add(df2,fill_value=0)
 # 2  18  20  22  24  0
 # 3   0   0   0   0  0
 
+# # operations between DataFrame and Series
+arr=np.arange(12.).reshape((3,4))
+arr
+# array([
+#     [  0.,   1.,   2.,   3.],
+#     [  4.,   5.,   6.,   7.],
+#     [  8.,   9.,  10.,  11.]
+# ])
+arr[0]
+# array([ 0.,  1.,  2.,  3.])
+arr-arr[0]
+#
+# **note: subtract arr[0] upon all rows
+# 
+# array([
+#     [ 0.,  0.,  0.,  0.],
+#     [ 4.,  4.,  4.,  4.],
+#     [ 8.,  8.,  8.,  8.]
+# ])
+
+frame=pd.DataFrame(
+    np.arange(12.).reshape((4,3)),
+    columns=list("bde"),
+    index=["Utah","Ohio","Texas","Oregon"]
+)
+frame
+#         b   d   e
+# Utah    0   1   2
+# Ohio    3   4   5
+# Texas   6   7   8
+# Oregon  9  10  11
+series=frame.ix[0] # take 0 row of values
+# b    0
+# d    1
+# e    2
+# Name: Utah, dtype: float64
+frame-series
+#
+# same like array - array[0]
+# arithmetic between DataFrame,Series applies
+# for all rows
+#
+#         b  d  e
+# Utah    0  0  0
+# Ohio    3  3  3
+# Texas   6  6  6
+# Oregon  9  9  9
+#
+series2=pd.Series(
+    range(3), index=list("bef")
+)
+frame+series2
+#
+# if index not found in either, objects reindexed
+# to form union where NaN value introduced
+#
+# cols: 'd','f' DNE in both
+# 
+#         b   d   e   f
+# Utah    0 NaN   3 NaN
+# Ohio    3 NaN   6 NaN
+# Texas   6 NaN   9 NaN
+# Oregon  9 NaN  12 NaN
+#
+# need to transpose to share same indices!
+frame.T.add(
+    # need to be same structure!
+    pd.DataFrame(series2),
+    fill_value=0
+)
+#    Utah  Ohio  Texas  Oregon
+# b     0     3      6       9
+# d     1     4      7      10
+# e     2     5      8      11
+#
+# if no fill_value, all NaN as neither share
+# common indices, therefore a union result
+#
+#     0  Ohio  Oregon  Texas  Utah
+# b NaN   NaN     NaN    NaN   NaN
+# d NaN   NaN     NaN    NaN   NaN
+# e NaN   NaN     NaN    NaN   NaN
+# f NaN   NaN     NaN    NaN   NaN
+#
+# broadcasting over cols, matching on rows
