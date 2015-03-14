@@ -8,7 +8,11 @@
 pd.Series : .sort_index, .sort
 pd.DataFrame : .sort_index(axis=num,ascending=bool)
 
-.rank: ranking - 
+.rank: data ranking with ties being assigned 
+       the mean of the ranks for the group
+       -**note: NaN are excluded
+       -http://en.wikipedia.org/wiki/Ranking#Ranking_in_statistics
+       -http://pandas.pydata.org/pandas-docs/dev/computation.html#data-ranking
 """
 
 import numpy as np
@@ -113,3 +117,82 @@ frame.sort_index(by=["a","b"])
 # 1  1  7
 
 # # ranking
+obj=pd.Series([7,-5,7,4,2,0,4])
+obj
+# 0    7
+# 1   -5
+# 2    7
+# 3    4
+# 4    2
+# 5    0
+# 6    4
+# dtype: int64
+obj.rank()
+# .rank of tied values uses the mean
+#
+# 0    6.5
+# 1    1.0
+# 2    6.5
+# 3    4.5
+# 4    3.0
+# 5    2.0
+# 6    4.5
+# dtype: float64
+obj.rank(method="first")
+# ranking method - taking whole int
+# 
+# 0    6
+# 1    1
+# 2    7
+# 3    4
+# 4    3
+# 5    2
+# 6    5
+# dtype: float64
+obj.rank(ascending=False,method="max")
+# 0    2
+# 1    7
+# 2    2
+# 3    4
+# 4    5
+# 5    6
+# 6    4
+# dtype: float64
+obj.rank(ascending=True,method="first")
+# rank by 'first' occurrence of indices
+#
+# 0    6
+# 1    1
+# 2    7
+# 3    4
+# 4    3
+# 5    2
+# 6    5
+# dtype: float64
+frame=pd.DataFrame(
+    {
+        "b":[4.3,7,-3,2],
+        "a":[0,1,0,1],
+        "c":[-2,5,8,-2.5]
+    }
+)
+frame
+#    a    b    c
+# 0  0  4.3 -2.0
+# 1  1  7.0  5.0
+# 2  0 -3.0  8.0
+# 3  1  2.0 -2.5
+frame.rank(axis=1)
+# rank based on rows
+#
+#    a  b  c
+# 0  2  3  1
+# 1  1  3  2
+# 2  2  1  3
+# 3  2  3  1
+
+# # Table5-8: breaking methods with rank
+{"'average'": 'Default: assign the average rank to each entry in the equal group.',
+ "'first'": 'Assign ranks in the order the values appear in the data.',
+ "'max'": 'Use the maximum rank for the whole group.',
+ "min'": 'Use the minimum rank for the whole group.'}
