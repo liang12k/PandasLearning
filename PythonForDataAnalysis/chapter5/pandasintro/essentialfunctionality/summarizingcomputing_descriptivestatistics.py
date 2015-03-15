@@ -130,3 +130,22 @@ obj.value_counts()
 # dtype: int64
 
 # # Table5-10: Descriptive & Summary Statistics
+{'argmin, argmax': 'ompute index locations (integers) at which minimum or maximum value obtained, respectively',
+ 'count': 'Number of non-NA values',
+ 'cummin, cummax': 'Cumulative minimum or maximum of values, respectively',
+ 'cumprod': 'Cumulative product of values',
+ 'cumsum': 'Cumulative sum of values',
+ 'describe': 'Compute set of summary statistics for Series or each DataFrame column',
+ 'diff': 'Compute 1st arithmetic difference (useful for time series)',
+ 'idxmin, idxmax': 'Compute index values at which minimum or maximum value obtained, respectively',
+ 'kurt': 'Sample kurtosis (4th moment) of values',
+ 'mad': 'Mean absolute deviation from mean value',
+ 'mean': 'Mean of values',
+ 'median': 'Arithmetic median (50% quantile) of values',
+ 'min, max': 'Compute minimum and maximum values',
+ 'pct_change': 'Compute percent changes',
+ 'quantile': 'Compute sample quantile ranging from 0 to 1',
+ 'skew': 'Sample skewness (3rd moment) of values',
+ 'std': 'Sample standard deviation of values',
+ 'sum': 'Sum of values',
+ 'var': 'Sample variance of values'}
