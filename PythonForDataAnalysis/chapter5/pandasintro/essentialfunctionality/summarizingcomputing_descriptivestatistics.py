@@ -114,6 +114,12 @@ df
 # b  7.10 -4.5
 # c   NaN  NaN
 # d  0.75 -1.3
+df.pct_changes()
+#         one       two
+# a       NaN       NaN
+# b  4.071429       NaN
+# c       NaN       NaN
+# d -0.894366 -0.711111
 #
 # # non-numeric data
 obj=pd.Series(["a","a","b","c"]*4)
