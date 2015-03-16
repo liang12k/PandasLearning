@@ -87,3 +87,24 @@ GOOG  0.000057  0.000175  0.000045  0.000072
 IBM   0.000073  0.000045  0.000136  0.000081
 MSFT  0.000081  0.000072  0.000081  0.000194
 '''
+# # .corrwith:
+# # -correlations betw DataFrame's cols,rows
+# #  w another Series or DataFrame
+# # axis=1 gets correlation per row
+#
+# .corrwith for Series gets correlation value
+# for each column (default)
+returns.corrwith(returns.IBM)
+# AAPL    0.371235
+# GOOG    0.316674
+# IBM     1.000000
+# MSFT    0.496789
+# dtype: float64
+#
+# .corrwith for DataFrame gets pct_change
+returns.corrwith(volume)
+# AAPL   -0.103036
+# GOOG   -0.192948
+# IBM    -0.189818
+# MSFT   -0.098655
+# dtype: float64
