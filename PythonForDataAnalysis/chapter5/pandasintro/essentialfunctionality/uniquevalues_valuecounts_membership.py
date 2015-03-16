@@ -50,7 +50,7 @@ mask
 # 7     True
 # 8     True
 # dtype: bool
-obj.[mask]
+obj[mask]
 # return only values where 'True'
 #
 # 0    c
@@ -64,6 +64,52 @@ m=obj=="a"; obj[m]
 # 3    a
 # 4    a
 # dtype: object
+
+# # getting histogram on multiple cols in DataFrame
+data=pd.DataFrame(
+    {
+        "Qu1":[1,3,4,3,5],
+        "Qu2":[2,3,1,2,3],
+        "Qu3":[1,5,2,4,4]
+    }
+)
+data
+'''
+   Qu1  Qu2  Qu3
+0    1    2    1
+1    3    3    5
+2    4    1    2
+3    3    2    4
+4    5    3    4
+'''
+data.stack().value_counts()
+# 3    4
+# 4    3
+# 2    3
+# 1    3
+# 5    2
+# dtype: int64
+data.apply(pd.value_counts)
+# for each value, determine the counts
+# of it in each column
+'''
+   Qu1  Qu2  Qu3
+1    1    1    1
+2  NaN    2    1
+3    2    2  NaN
+4    1  NaN    2
+5    1  NaN    1
+'''
+data.apply(pd.value_counts).fillna(0)
+# from above, replace NaN with 0
+'''
+   Qu1  Qu2  Qu3
+1    1    1    1
+2    0    2    1
+3    2    2    0
+4    1    0    2
+5    1    0    1
+'''
 
 # # Table5-11: unique,value counts, binning methods
 {'isin': 'Compute boolean array indicating whether each Series value is contained in the passed sequence of values.',
