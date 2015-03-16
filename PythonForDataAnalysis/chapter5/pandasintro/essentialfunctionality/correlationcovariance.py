@@ -7,7 +7,7 @@ import pandas as pd
 import pandas.io.data as web
 
 alldata={}
-for ticker in ["AAPL","MSFT","GOOG"]:
+for ticker in ["AAPL","IBM","MSFT","GOOG"]:
     alldata[ticker]=web.get_data_yahoo(
         ticker,"1/1/2010","1/1/2015"
     )
