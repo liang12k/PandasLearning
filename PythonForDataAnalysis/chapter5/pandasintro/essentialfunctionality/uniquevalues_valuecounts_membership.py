@@ -1,0 +1,71 @@
+"""
+
+"""
+
+import numpy as np
+import pandas as pd
+
+obj=pd.Series(list("cadaabbcc"))
+obj
+# 0    c
+# 1    a
+# 2    d
+# 3    a
+# 4    a
+# 5    b
+# 6    b
+# 7    c
+# 8    c
+# dtype: object
+obj.value_counts()
+# c    3
+# a    3
+# b    2
+# d    1
+# dtype: int64
+obj.value_counts(sort=False)
+# # supposed to be a,b,c,d
+#   (diff from book, pd vers diff?)
+# a    3
+# c    3
+# b    2
+# d    1
+# dtype: int64
+unique=obj.unique()
+unique
+# array(['c', 'a', 'd', 'b'], dtype=object)
+
+# # .isin: vectorized set membership
+# #        -helps for filtering dataset down to
+# #         subset of values in Series, DataFrame col
+mask=obj.isin(["b","c"])
+mask
+# 0     True
+# 1    False
+# 2    False
+# 3    False
+# 4    False
+# 5     True
+# 6     True
+# 7     True
+# 8     True
+# dtype: bool
+obj.[mask]
+# return only values where 'True'
+#
+# 0    c
+# 5    b
+# 6    b
+# 7    c
+# 8    c
+# dtype: object
+m=obj=="a"; obj[m]
+# 1    a
+# 3    a
+# 4    a
+# dtype: object
+
+# # Table5-11: unique,value counts, binning methods
+{'isin': 'Compute boolean array indicating whether each Series value is contained in the passed sequence of values.',
+ 'unique': 'Compute array of unique values in a Series, returned in the order observed.',
+ 'value_counts': 'Return a Series containing unique values as its index and frequencies as its values, ordered count in descending order.'}
