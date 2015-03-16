@@ -82,7 +82,30 @@ data
 3    3    2    4
 4    5    3    4
 '''
+data.stack()
+# # DataFrame.stack(): pivots level of DataFrame
+# #                    as a single level
+'''
+0  Qu1    1
+   Qu2    2
+   Qu3    1
+1  Qu1    3
+   Qu2    3
+   Qu3    5
+2  Qu1    4
+   Qu2    1
+   Qu3    2
+3  Qu1    3
+   Qu2    2
+   Qu3    4
+4  Qu1    5
+   Qu2    3
+   Qu3    4
+dtype: int64
+'''
 data.stack().value_counts()
+# # from stack of values, get value_counts
+#
 # 3    4
 # 4    3
 # 2    3
