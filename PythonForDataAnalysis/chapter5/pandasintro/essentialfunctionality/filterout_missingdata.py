@@ -90,7 +90,7 @@ df
 6  1.277116 -0.697095 -0.134517
 '''
 df.ix[:4,1]=NA; df.ix[:2,2]=NA; df
-# syntax: df.ix[rowXi : rowXn, colIdx]
+# syntax: df.ix[rXi : rXn, [cIdx1,cIdx2,...]]
 # replace col 1, rows 0:4 = NA
 # replace col 2, rows 0:2 = NA
 '''
@@ -111,6 +111,16 @@ df.ix[:3]
 1  1.325532 NaN       NaN
 2  0.804475 NaN       NaN
 3  1.555792 NaN -1.693698
+'''
+df.ix[:4,[2,0]]
+# get cols order 2,0 and rows 0:4
+'''
+          2         0
+0       NaN  0.169538
+1       NaN  1.325532
+2       NaN  0.804475
+3 -1.693698  1.555792
+4 -0.625268 -0.476087
 '''
 df.dropna()
 # drop all rows,cols w NaN value
