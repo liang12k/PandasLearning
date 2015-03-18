@@ -151,4 +151,9 @@ data.fillna(data.mean()) # fillna w mean value
 # 4    7.000000
 # dtype: float64
 
-# # Table5-13: reference on .fillna
+# # Table5-13: reference on .fillna, args
+{'axis': 'Axis to fill on, default axis=0',
+ 'inplace': 'Modify the calling object without producing a copy',
+ 'limit': 'For forward and backward filling, maximum number of consecutive periods to fill',
+ 'method': "Interpolation, by default 'ffill' if function called with no other arguments",
+ 'value': 'Scalar value or dict-like object to use to fill missing values'}
