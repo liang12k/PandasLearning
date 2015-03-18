@@ -8,6 +8,7 @@ MultiIndex indexing:
 -http://pandas.pydata.org/pandas-docs/dev/advanced.html
 -aka: multi-level indexing
 -obj is an array of tuples and each tuple is unique
+-site w examples: http://assorted-experience.blogspot.com/2013/05/multi-indexing-with-pandas-dataframe.html
 """
 
 import numpy as np
@@ -43,3 +44,5 @@ MultiIndex(
     labels=[[0, 0, 0, 1, 1, 1, 2, 2, 3, 3], 
             [0, 1, 2, 0, 1, 2, 0, 1, 1, 2]])
 '''
+# # site w multiindex examples
+# # http://assorted-experience.blogspot.com/2013/05/multi-indexing-with-pandas-dataframe.html
