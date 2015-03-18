@@ -3,6 +3,11 @@ hierarchical indexing:
 -enables multiple index levels (2+) on an axis
  provides a way to work w higher dimensional data
  in lower dimensional form
+
+MultiIndex indexing:
+-http://pandas.pydata.org/pandas-docs/dev/advanced.html
+-aka: multi-level indexing
+-obj is an array of tuples and each tuple is unique
 """
 
 import numpy as np
