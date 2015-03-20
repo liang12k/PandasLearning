@@ -24,6 +24,12 @@ a    1        0   1        2
 b    1        6   7        8
      2        9  10       11
 '''
+frame.index
+'''
+MultiIndex(levels=[[u'a', u'b'], [1, 2]],
+           labels=[[0, 0, 1, 1], [0, 1, 0, 1]],
+           names=[u'key1', u'key2'])
+'''
 frame.swaplevel("key1","key2")
 # == frame.swaplevel(0,1)
 '''
