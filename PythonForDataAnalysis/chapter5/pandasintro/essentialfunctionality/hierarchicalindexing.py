@@ -124,3 +124,111 @@ d  2   -1.665426
    3    0.578462
 dtype: float64
 '''
+
+# # DataFrame: either axis can have
+#              hierarchical index
+frame=DataFrame(
+    np.arange(12).reshape((4,3)),
+    index=[
+        list("aabb"),
+        [1,2,1,2]
+    ],
+    columns=[
+        ["Ohio","Ohio","Colorado"],
+        ["Green","Red","Green"]
+    ]
+)
+# parent row index: 'a','b'
+# -with sub rows: 1,2 , 1,2
+# column names: 'Ohio','Colorado'
+# -with sub cols: 'Green','Red' , 'Green'
+#  **note: Ohio displayed once, owns 2 cols
+frame
+'''
+     Ohio     Colorado
+    Green Red    Green
+a 1     0   1        2
+  2     3   4        5
+b 1     6   7        8
+  2     9  10       11
+'''
+# data selection, diving into MultiIndex
+frame.Ohio
+'''
+     Green  Red
+a 1      0    1
+  2      3    4
+b 1      6    7
+  2      9   10
+'''
+frame.Ohio["Green"]
+'''
+a  1    0
+   2    3
+b  1    6
+   2    9
+Name: Green, dtype: int64
+'''
+frame.Ohio["Green"]["b"]
+'''
+1    6
+2    9
+Name: Green, dtype: int64
+'''
+frame.Ohio["Green"][:,2]
+# all rows of 'Green', take row 2
+'''
+a    0
+b    6
+Name: Green, dtype: int64
+'''
+# assigning index names
+# **note: not axis labels!!
+frame.index.names=["key1","key2"]
+frame.columns.names=["state","color"]
+frame
+'''
+state      Ohio     Colorado
+color     Green Red    Green
+key1 key2
+a    1        0   1        2
+     2        3   4        5
+b    1        6   7        8
+     2        9  10       11
+'''
+frame.Ohio
+# partial col indexing
+'''
+color      Green  Red
+key1 key2
+a    1         0    1
+     2         3    4
+b    1         6    7
+     2         9   10
+'''
+frame.unstack()
+# rearrange the DataFrame
+'''
+state  Ohio            Colorado
+color Green    Red        Green
+key2      1  2   1   2        1   2
+key1
+a         0  3   1   4        2   5
+b         6  9   7  10        8  11
+'''
+# construct columns frame's cols into MultiIndex
+(pd.MultiIndex
+   .from_arrays(
+       [
+           ["Ohio","Ohio","Colorado"],
+           ["Green","Red","Green"]
+       ],
+       names=["state","color"])
+
+)
+'''
+MultiIndex(
+levels=[[u'Colorado', u'Ohio'], [u'Green', u'Red']],
+labels=[[1, 1, 0], [0, 1, 0]],
+names=[u'state', u'color'])
+'''
