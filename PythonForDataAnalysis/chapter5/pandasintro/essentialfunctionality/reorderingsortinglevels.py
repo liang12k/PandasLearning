@@ -51,6 +51,7 @@ key2 key1
 1    b     True  True     True
 2    b     True  True     True
 '''
+frame.sortlevel(0) # # == frame.sort_index()
 frame.sortlevel(1)
 # 0 level = "a","b"
 # 1 level = 1,2
