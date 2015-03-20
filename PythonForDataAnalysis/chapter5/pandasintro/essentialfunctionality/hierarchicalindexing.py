@@ -1,8 +1,11 @@
 """
-hierarchical indexing:
+Hierarchical Indexing:
 -enables multiple index levels (2+) on an axis
  provides a way to work w higher dimensional data
  in lower dimensional form
+- .unstack: reshapes data to get a DataFrame
+  : .stack applied on .unstack gets 
+    original data form (inverse operation)
 
 MultiIndex indexing:
 -http://pandas.pydata.org/pandas-docs/dev/advanced.html
@@ -82,10 +85,42 @@ dtype: float64
 '''
 data[:,2]
 # # data selection from inner level
-# # -in this case, level 2
+# # -in this case, each 'parent' level 2 (row 2)
 #
 # a    0.735823
 # b    0.161846
 # c   -0.203287
 # d   -1.665426
 # dtype: float64
+data[:,3]
+# values of each 'parent' index's row 3
+#
+# a    0.893494
+# b    0.394919
+# d    0.578462
+# dtype: float64
+
+# # reshaping data
+data.unstack() # gets a DataFrame
+'''
+          1         2         3
+a -0.521040  0.735823  0.893494
+b -1.725485  0.161846  0.394919
+c  0.565266 -0.203287       NaN
+d       NaN -1.665426  0.578462
+'''
+# inverse of .unstack is .stack
+data.unstack().stack()
+'''
+a  1   -0.521040
+   2    0.735823
+   3    0.893494
+b  1   -1.725485
+   2    0.161846
+   3    0.394919
+c  1    0.565266
+   2   -0.203287
+d  2   -1.665426
+   3    0.578462
+dtype: float64
+'''
