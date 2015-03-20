@@ -24,6 +24,7 @@ data=Series(
     ]
 )
 data
+# 'nested' index
 '''
 a  1    0.994479
    2   -0.849546
@@ -37,6 +38,13 @@ d  2    0.614288
    3   -0.804458
 dtype: float64
 '''
+data.a
+# 1   -0.521040
+# 2    0.735823
+# 3    0.893494
+# dtype: float64
+data.a[1] # == data['a'][1]
+# -0.5210397174321687
 data.index
 '''
 MultiIndex(
@@ -46,3 +54,38 @@ MultiIndex(
 '''
 # # site w multiindex examples
 # # http://assorted-experience.blogspot.com/2013/05/multi-indexing-with-pandas-dataframe.html
+data["b":"c"]
+'''
+b  1   -1.725485
+   2    0.161846
+   3    0.394919
+c  1    0.565266
+   2   -0.203287
+dtype: float64
+'''
+data.ix["b"]
+# 1   -1.725485
+# 2    0.161846
+# 3    0.394919
+# dtype: float64
+data.ix[["b","d","a"]]
+'''
+b  1   -1.725485
+   2    0.161846
+   3    0.394919
+d  2   -1.665426
+   3    0.578462
+a  1   -0.521040
+   2    0.735823
+   3    0.893494
+dtype: float64
+'''
+data[:,2]
+# # data selection from inner level
+# # -in this case, level 2
+#
+# a    0.735823
+# b    0.161846
+# c   -0.203287
+# d   -1.665426
+# dtype: float64
