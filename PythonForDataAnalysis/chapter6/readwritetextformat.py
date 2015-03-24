@@ -40,3 +40,28 @@ df
 1  5   6   7   8   world
 2  9  10  11  12     foo
 '''
+pd.read_csv("ex2.csv")
+'''
+   1   2   3   4  hello
+0  5   6   7   8  world
+1  9  10  11  12    foo
+'''
+pd.read_csv("ex2.csv",header=None)
+# default numerical header names
+'''
+   0   1   2   3      4
+0  1   2   3   4  hello
+1  5   6   7   8  world
+2  9  10  11  12    foo
+'''
+pd.read_csv(
+    "ex2.csv",
+    names=["a","b","c","d","message"]
+)
+# assigning col names
+'''
+   a   b   c   d message
+0  1   2   3   4   hello
+1  5   6   7   8   world
+2  9  10  11  12     foo
+'''
