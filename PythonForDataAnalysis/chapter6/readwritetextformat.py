@@ -65,3 +65,47 @@ pd.read_csv(
 1  5   6   7   8   world
 2  9  10  11  12     foo
 '''
+names=["a","b","c","d","message"]
+pd.read_csv(
+    "ex2.csv",
+    names=names,
+    index_col="message"
+)
+# creates DataFrame w 'message' as index
+'''
+         a   b   c   d
+message
+hello    1   2   3   4
+world    5   6   7   8
+foo      9  10  11  12
+'''
+pd.read_csv(
+    "ex2.csv",
+    names=["a","b","c","d","message"],
+    index_col=["a","message"]
+)
+# hierarchical index from the index_col arg
+'''
+            b   c   d
+a message
+1 hello     2   3   4
+5 world     6   7   8
+9 foo      10  11  12
+'''
+parsed=pd.read_csv(
+    "csv_mindex.csv",
+    index_col=["key1","key2"]
+); parsed
+# hierarchical index
+'''
+           value1  value2
+key1 key2
+one  a          1       2
+     b          3       4
+     c          5       6
+     d          7       8
+two  a          9      10
+     b         11      12
+     c         13      14
+     d         15      16
+'''
