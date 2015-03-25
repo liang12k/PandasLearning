@@ -241,3 +241,24 @@ srslt
 '''
 
 # # Table6-2: .read_csv, .read_table func args
+{'chunksize': 'For iteration, size of file chunks',
+ 'comment': 'Character or characters to split comments off the end of lines',
+ 'converters': "Dict containing column number of name mapping to functions. For example {'foo': f} would apply\nthe function f to all values in the 'foo' column",
+ 'date_parser': 'Function to use to parse dates',
+ 'dayfirst': 'When parsing potentially ambiguous dates, treat as international format (e.g. 7/6/2012 -> June 7,2012). Default False',
+ 'encoding': "Text encoding for unicode. For example 'utf-8' for UTF-8 encoded text",
+ 'header': 'Row number to use as column names. Defaults to 0 (first row), but should be None if there is no header row',
+ 'index_col': 'Column numbers or names to use as the row index in the result. Can be a single name/number or a list of them for a hierarchical index',
+ 'iterator': 'Return a TextParser object for reading file piecemeal',
+ 'keep_date_col': 'If joining columns to parse date, drop the joined columns. Default True',
+ 'na_values': 'Sequence of values to replace with NA',
+ 'names': 'List of column names for result, combine with header=None',
+ 'nrows': 'Number of rows to read from beginning of file',
+ 'parse_dates': 'Attempt to parse data to datetime; False by default. If True, will attempt to parse all columns. Otherwise can specify a list of column numbers or name to parse. If element of list is tuple or list, will combine multiple columns together and parse to date (for example if date/time split across two columns)',
+ 'path': 'String indicating filesystem location, URL, or file-like object',
+ 'sep or delimiter': 'Character sequence or regular expression to use to split fields in each row',
+ 'skip_footer': 'Number of lines to ignore at end of file',
+ 'skiprows': 'Number of rows at beginning of file to ignore or list of row numbers (starting from 0) to skip',
+ 'squeeze': 'If the parsed data only contains one column return a Series',
+ 'thousands': "Separator for thousands, e.g. ',' or '.'",
+ 'verbose': 'Print various parser output information, like the number of missing values placed in non-numeric columns'}
