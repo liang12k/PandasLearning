@@ -198,6 +198,26 @@ result
 2     three  9  10  11  12     foo
 '''
 # # ** note: pd.read_csv("ex5.csv") != result
+# # this is True though:
+# pd.read_csv("ex5.csv").isnull()==result.isnull()
+'''
+  something     a     b      c     d message
+0      True  True  True   True  True   False
+1      True  True  True  False  True    True
+2      True  True  True   True  True    True
+'''
+### # ***** ?????????? **********************
+# # strange, needs investigation
+# r=pd.read_csv("ex5.csv",na_values=["NULL"])
+# r==result:
+'''
+  something     a     b      c     d message
+0      True  True  True   True  True   False
+1      True  True  True  False  True    True
+2      True  True  True   True  True    True
+'''
+# r=pd.read_csv("ex5.csv")
+# r==pd.read_csv("ex5.csv")
 '''
   something     a     b      c     d message
 0      True  True  True   True  True   False
@@ -205,3 +225,19 @@ result
 2      True  True  True   True  True    True
 '''
 
+# # specifying different sentinels
+# # -certain values are NaN
+sentinels={
+    "message":["foo","NA"],
+    "something" : ["two"]
+}
+srslt=pd.read_csv("ex5.csv", na_values=sentinels)
+srslt
+'''
+  something  a   b   c   d message
+0       one  1   2   3   4     NaN
+1       NaN  5   6 NaN   8   world
+2     three  9  10  11  12     NaN
+'''
+
+# # Table6-2: .read_csv, .read_table func args
