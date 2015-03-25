@@ -159,3 +159,33 @@ foo      9  10  11  12
 '''
 
 # # handling missing values
+# # -empty sting, marked sentinel value
+# # -pandas default values are: NA, -1.#IND, NULL
+list(open("ex5.csv"))
+'''
+['something,a,b,c,d,message\n',
+ 'one,1,2,3,4,NA\n',
+ 'two,5,6,,8,world\n',
+ 'three,9,10,11,12,foo']
+'''
+result=pd.read_csv("ex5.csv"); result
+'''
+  something  a   b   c   d message
+0       one  1   2   3   4     NaN
+1       two  5   6 NaN   8   world
+2     three  9  10  11  12     foo
+'''
+pd.isnull(result)
+'''
+  something      a      b      c      d message
+0     False  False  False  False  False    True
+1     False  False  False   True  False   False
+2     False  False  False  False  False   False
+'''
+pd.notnull(result)
+'''
+  something     a     b      c     d message
+0      True  True  True   True  True   False
+1      True  True  True  False  True    True
+2      True  True  True   True  True    True
+'''
