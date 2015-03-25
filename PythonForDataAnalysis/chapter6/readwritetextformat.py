@@ -189,3 +189,19 @@ pd.notnull(result)
 1      True  True  True  False  True    True
 2      True  True  True   True  True    True
 '''
+result=pd.read_csv("ex5.csv",na_values=["NULL"])
+result
+'''
+  something  a   b   c   d message
+0       one  1   2   3   4     NaN
+1       two  5   6 NaN   8   world
+2     three  9  10  11  12     foo
+'''
+# # ** note: pd.read_csv("ex5.csv") != result
+'''
+  something     a     b      c     d message
+0      True  True  True   True  True   False
+1      True  True  True  False  True    True
+2      True  True  True   True  True    True
+'''
+
