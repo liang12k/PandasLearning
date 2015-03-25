@@ -109,3 +109,53 @@ two  a          9      10
      c         13      14
      d         15      16
 '''
+
+# # no delimiter in txt file
+# # determine if it can be delimited by whitespace
+list(open("ex3.txt"))
+'''
+['            A         B         C\n',
+ 'aaa -0.264438 -1.026059 -0.619500\n',
+ 'bbb  0.927272  0.302904 -0.032399\n',
+ 'ccc -0.264273 -0.386314 -0.217601\n',
+ 'ddd -0.871858 -0.348382  1.100491\n']
+'''
+result=pd.read_table("ex3.txt",sep="\s+"); result
+# **note: since there's 1 less named col,
+#         .read_table places 1st col as index
+'''
+            A         B         C
+aaa -0.264438 -1.026059 -0.619500
+bbb  0.927272  0.302904 -0.032399
+ccc -0.264273 -0.386314 -0.217601
+ddd -0.871858 -0.348382  1.100491
+'''
+result.index
+# Index([u'aaa', u'bbb', u'ccc', u'ddd'], dtype='object')
+
+# # skipping rows from read file
+list(open("ex4.csv"))
+# misc rows below, should be skipped when loaded
+'''
+['# hey!\n',
+ 'a,b,c,d,message\n',
+ '# just wanted to make things more difficult for you\n',
+ '# who reads CSV files with computers, anyway?\n',
+ '1,2,3,4,hello\n',
+ '5,6,7,8,world\n',
+ '9,10,11,12,foo']
+'''
+pd.read_csv(
+    "ex4.csv",
+    skiprows=[0,2,3],
+    index_col="message"
+)
+'''
+         a   b   c   d
+message
+hello    1   2   3   4
+world    5   6   7   8
+foo      9  10  11  12
+'''
+
+# # handling missing values
