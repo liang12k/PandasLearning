@@ -4,6 +4,9 @@ learning python's pandas
 learning python pandas via YouTube playlist
 http://goo.gl/4vagxu
 
+using workbook:
+Python for Data Analysis (O'Reilly, W. McKinney)
+
 common mac terminal nano cmds
 http://goo.gl/fRrLZg
 
