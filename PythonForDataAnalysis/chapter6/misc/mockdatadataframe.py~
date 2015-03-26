@@ -1,0 +1,7 @@
+"""
+put all mock data google, twitter into dataframe
+"""
+from googleplus_mockdata import *
+from twitter_mockdata import *
+import pandas as pd
+
