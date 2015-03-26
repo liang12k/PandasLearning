@@ -18,3 +18,33 @@ pd.read_csv("ex6.csv",nrows=5)
 3  0.204886  1.074134  1.388361 -0.982404   R
 4  0.354628 -0.133116  0.283763 -0.837063   Q
 '''
+
+# # read a file in pieces using 'chunksize'
+chunker=pd.read_csv("ex6.csv",chunksize=1000)
+chunker
+# <pandas.io.parsers.TextFileReader at 0x10bbe5fd0>
+# # TextParser object:
+# # -can be used to iterate over parts of file
+# #  according to chunksize
+tot=pd.Series([])
+# for each piece, count the 'key' values
+# fill NaN values with 0 to continue count
+for piece in chunker:
+    tot=tot.add(
+        piece["key"].value_counts(),
+        fill_value=0
+    )
+tot=tot.order(ascending=False); tot[:10]
+'''
+E    368
+X    364
+L    346
+O    343
+Q    340
+M    338
+J    337
+F    335
+K    334
+H    330
+dtype: float64
+'''    
