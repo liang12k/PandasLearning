@@ -240,6 +240,17 @@ srslt
 2     three  9  10  11  12     NaN
 '''
 
+df_convColA=pd.read_csv(
+    "ex5.csv",
+    converters={"a":lambda x: int(x)**2}
+); df_convColA
+'''
+  something   a   b   c   d message
+0       one   1   2   3   4     NaN
+1       two  25   6 NaN   8   world
+2     three  81  10  11  12     foo
+'''
+
 # # Table6-2: .read_csv, .read_table func args
 {'chunksize': 'For iteration, size of file chunks',
  'comment': 'Character or characters to split comments off the end of lines',
