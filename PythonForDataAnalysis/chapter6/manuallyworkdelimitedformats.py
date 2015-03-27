@@ -27,5 +27,13 @@ header,values = lines[0],lines[1:]
 datadict={h:v for h,v in zip(header,zip(*values))}
 # # note: zip(*values) applies zip onto values itself
 # [('1', '1'), ('2', '2'), ('3', '3')]
+# # since there are only 3 headers ('a','b','c')
+# # col index 3 is omitted (missing '4' value)
 datadict
 # {'a': ('1', '1'), 'b': ('2', '2'), 'c': ('3', '3')}
+pd.DataFrame(datadict)
+'''
+   a  b  c
+0  1  2  3
+1  1  2  3
+'''
