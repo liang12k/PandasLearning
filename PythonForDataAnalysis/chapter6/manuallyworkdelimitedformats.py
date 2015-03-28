@@ -52,3 +52,11 @@ reader=csv.reader(f,dialect=mydialect)
 reader=csv.reader(f,delimiter="|")
 # <_csv.reader at 0x1136ccc90>
 
+# # Table 6-3: CSV dialect options
+{'delimiter': "One-character string to separate fields. Defaults to ','.",
+ 'doublequote': 'How to handle quoting character inside a field. If True, it is doubled. See online documentation for full detail and behavior.',
+ 'escapechar': 'String to escape the delimiter if quoting is set to csv.QUOTE_NONE. Disabled by default',
+ 'lineterminator': "Line terminator for writing, defaults to '\r\n'. Reader ignores this and recognizes cross platform line terminators.",
+ 'quotechar': 'Quote character for fields with special characters (like a delimiter). Default is \'"\'.',
+ 'quoting': "Quoting convention. Options include csv.QUOTE_ALL (quote all fields), csv.QUOTE_MINIMAL (only fields with special characters like the delimiter), csv.QUOTE_NONNUMERIC, and csv.QUOTE_NON (no quoting). See Python's documentation for full details. Defaults to QUOTE_MINIMAL.",
+ 'skipinitialspace': 'Ignore whitespace after each delimiter. Default False.'}
