@@ -65,6 +65,16 @@ sampledata_reader=csv.reader(
 )
 print list(sampledata_reader)
 # [['one', 'two', 'three'], ['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']]
+pd.read_csv(
+    "samplemanual_writedata.csv",
+    delimiter=";"
+)
+'''
+   one  two  three
+0    1    2      3
+1    4    5      6
+2    7    8      9
+'''
 
 
 # # Table 6-3: CSV dialect options
