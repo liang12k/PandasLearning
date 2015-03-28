@@ -52,6 +52,21 @@ reader=csv.reader(f,dialect=mydialect)
 reader=csv.reader(f,delimiter="|")
 # <_csv.reader at 0x1136ccc90>
 
+# # manually write delimited files
+with open("samplemanual_writedata.csv","w") as f:
+    writer=csv.writer(f,dialect=mydialect)
+    writer.writerow(("one","two","three"))
+    writer.writerow(list("123"))
+    writer.writerow(list("456"))
+    writer.writerow(list("789"))
+sampledata_reader=csv.reader(
+    open("samplemanual_writedata.csv"),
+    delimiter=";"
+)
+print list(sampledata_reader)
+# [['one', 'two', 'three'], ['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']]
+
+
 # # Table 6-3: CSV dialect options
 {'delimiter': "One-character string to separate fields. Defaults to ','.",
  'doublequote': 'How to handle quoting character inside a field. If True, it is doubled. See online documentation for full detail and behavior.',
