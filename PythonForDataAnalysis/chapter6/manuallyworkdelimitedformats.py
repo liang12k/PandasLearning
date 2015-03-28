@@ -37,3 +37,13 @@ pd.DataFrame(datadict)
 0  1  2  3
 1  1  2  3
 '''
+
+class mydialect(csv.Dialect):
+    lineterminator="\n"
+    delimiter=";"
+    quotechar='"'
+
+# reader=csv.reader(f,dialect=mydialect)
+
+# reader=csv.reader(f,delimiter="|"); reader
+
