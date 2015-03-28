@@ -38,12 +38,17 @@ pd.DataFrame(datadict)
 1  1  2  3
 '''
 
+# # note: have to add quoting attribute
+# # see : http://www.oreilly.com/catalog/errata.csp?isbn=0636920023784
 class mydialect(csv.Dialect):
     lineterminator="\n"
     delimiter=";"
     quotechar='"'
+    quoting=csv.QUOTE_MINIMAL
 
-# reader=csv.reader(f,dialect=mydialect)
+reader=csv.reader(f,dialect=mydialect)
+# <_csv.reader at 0x1136e59f0>
 
-# reader=csv.reader(f,delimiter="|"); reader
+reader=csv.reader(f,delimiter="|")
+# <_csv.reader at 0x1136ccc90>
 
