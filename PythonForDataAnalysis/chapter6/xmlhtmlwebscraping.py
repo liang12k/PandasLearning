@@ -21,3 +21,10 @@ Yahoo! Finance stock options data
   strikes and expires
 '''
 
+parsed=parse(
+    urlopen("http://finance.yahoo.com/q/op?s=AAPL+Options")
+)
+doc=parsed.getroot(); doc
+
+links=doc.findall(".//a"); links[15:20]
+
