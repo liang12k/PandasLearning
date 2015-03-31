@@ -101,3 +101,49 @@ def _unpack(row,kind="td"):
 
 print _unpack(rows[0],kind="th")
 # ['Strike Filter', 'Contract Name', 'Last', 'Bid', 'Ask', 'Change', '%Change', 'Volume', 'Open Interest', 'Implied Volatility']
+print _unpack(rows[1],kind="td") # [['modify']]
+print _unpack(rows[2],kind="td")
+# ['90.00', 'AAPL150402P00090000', '0.01', '0.00', '0.01', '0.00', '0.00%', '888', '1008', '125.00%']
+
+# # converting data set into DataFrame
+# # **note: not all cols to be converted
+# #         to floating point format
+def parse_options_data(table):
+    """ using pd.io.parsers.TextParser """
+    rows=table.findall(".//tr")
+    header = _unpack(rows[0],kind="th")
+    data=[_unpack(r) for r in rows[2:]]
+    return pd.io.parsers.TextParser(
+               data,names=header
+           ).get_chunk()
+
+call_data=parse_options_data(calls)
+print call_data[-10:].ix[:,["Strike","Change","Last","Bid","Ask","Contract Name"]]
+'''
+    Strike  Change   Last    Bid    Ask        Contract Name
+28     NaN   -2.95   5.90   5.60   5.75  AAPL150402P00132000
+29     NaN   -2.42   7.41   6.60   6.80  AAPL150402P00133000
+30     NaN   -1.98   8.72   7.55   7.80  AAPL150402P00134000
+31     NaN    0.00  11.53   8.60   8.80  AAPL150402P00135000
+32     NaN    0.00  12.55   9.60   9.80  AAPL150402P00136000
+33     NaN    0.00  11.92  10.55  10.80  AAPL150402P00137000
+34     NaN    0.00  10.87  11.55  11.80  AAPL150402P00138000
+35     NaN   -1.85  14.55  13.55  13.80  AAPL150402P00140000
+36     NaN    0.00  17.85  18.55  18.80  AAPL150402P00145000
+37     NaN    0.00  26.40  23.55  23.80  AAPL150402P00150000
+'''
+put_data =parse_options_data(puts)
+print put_data[-10:].ix[:,["Strike","Change","Last","Bid","Ask","Contract Name"]]
+'''
+    Strike  Change  Last  Bid   Ask        Contract Name
+32     NaN   -0.01  0.01    0  0.01  AAPL150402C00138000
+33     NaN    0.00  0.01    0  0.01  AAPL150402C00139000
+34     NaN    0.00  0.01    0  0.01  AAPL150402C00140000
+35     NaN    0.00  0.01    0  0.01  AAPL150402C00141000
+36     NaN    0.00  0.01    0  0.01  AAPL150402C00142000
+37     NaN    0.00  0.01    0  0.01  AAPL150402C00143000
+38     NaN    0.00  0.01    0  0.01  AAPL150402C00145000
+39     NaN    0.00  0.02    0  0.01  AAPL150402C00146000
+40     NaN    0.00  0.01    0  0.01  AAPL150402C00150000
+41     NaN    0.00  0.01    0  0.01  AAPL150402C00155000
+'''
