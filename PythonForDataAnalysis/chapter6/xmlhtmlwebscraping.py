@@ -89,9 +89,15 @@ print len(rows) # 40
 def _unpack(row,kind="td"):
     """ extract text from each header, row """
     elts=row.findall(".//%s" % kind)
-    # elts=[s.text_content() for s in elts]
-    # elts=[s for s in elts if s.strip()]
-    return [val.text_content() for val in elts]
+    elts=[s.text_content() for s in elts]
+    elts=[" ".join(
+            (s.replace("\n","")
+              # .replace("\ue002","")
+              # .replace("\ue004","")
+              .encode("ascii","ignore")
+            ).strip().split())
+          for s in elts]
+    return elts
 
 print _unpack(rows[0],kind="th")
-# 
+# ['Strike Filter', 'Contract Name', 'Last', 'Bid', 'Ask', 'Change', '%Change', 'Volume', 'Open Interest', 'Implied Volatility']
