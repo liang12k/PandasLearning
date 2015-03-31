@@ -70,3 +70,28 @@ urls[-10:]
  '/q/op?s=AAPL&strike=150.00',
  '/q?s=AAPL150402P00150000']
 '''
+# # **note:
+# # finding right tables may take trial & error
+tables=doc.findall(".//table")
+'''
+[<Element table at 0x1066be2b8>,
+ <Element table at 0x1066be310>,
+ <Element table at 0x1066be368>]
+'''
+calls=tables[-1]; print calls
+# <Element table at 0x106918c00>
+puts=tables[1];   print puts
+# <Element table at 0x106918ba8>
+rows=calls.findall(".//tr")
+# # get header row
+print len(rows) # 40
+
+def _unpack(row,kind="td"):
+    """ extract text from each header, row """
+    elts=row.findall(".//%s" % kind)
+    # elts=[s.text_content() for s in elts]
+    # elts=[s for s in elts if s.strip()]
+    return [val.text_content() for val in elts]
+
+print _unpack(rows[0],kind="th")
+# 
