@@ -1,0 +1,4 @@
+"""
+ExcelFile class:
+-uses xlrd, openpyxl pkgs
+"""

@@ -29,4 +29,13 @@ from binarydataformats import frame
 store=pd.HDFStore("mydata.h5")
 store["obj"]=frame
 store["obj1_col1"]=frame["a"]
-print store
+print store["obj1"]
+# output taken from book
+# as of Apr-03-2015: having issues installing: pip install tables
+# -clang error, can't detect HDF5 installation
+'''
+  a  b  c  d message 
+0 1  2  3  4 hello 
+1 5  6  7  8 world 
+2 9 10 11 12 foo
+'''
