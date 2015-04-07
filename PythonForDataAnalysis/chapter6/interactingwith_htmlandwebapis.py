@@ -26,13 +26,15 @@ print data.keys() # [u'errors']
 NOTE:
 -----
 {"errors":[{"message":"The Twitter REST API v1 is no longer active. Please migrate to API v1.1. https://dev.twitter.com/docs/api/1.1/overview.","code":64}]}
+
+# http://stackoverflow.com/questions/17207850/need-help-converting-to-twitter-api-v1-1-javascript
+legacy twitter api - follow the steps in above link
+**1.0 API is deprecated!
 '''
 
 import urllib2
 # from new twitter api
-url="https://twitter.com/search?q=python%20pandas"
-resp=urllib2.urlopen(url); print resp
-# <addinfourl at 4370323936 whose fp = <socket._fileobject object at 0x1046db750>>
-# # JSONDecodeError !!
+url=""
+# resp=urllib2.urlopen(url); print resp
 # data=json.loads(resp.text)
 # print data.keys()
