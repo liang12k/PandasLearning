@@ -6,6 +6,9 @@ response object:
 'text' attribute contains the content of GET query
 **note: many web APIs return a JSON string the needs
         to be loaded into a Python object!
+
+json validator: enter a link into the validator field
+http://jsonlint.com/
 """
 
 import json
