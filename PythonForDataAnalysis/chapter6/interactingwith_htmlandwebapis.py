@@ -59,3 +59,33 @@ print data[0].keys()
  u'entityid',
  u'principalstate']
 '''
+coloradojson_fields=[
+    "agentprincipalzipcode",
+    "agentprincipaladdress1",
+    "agentprincipalstate"
+]
+# # **note: pass in data as it is, a list
+# #         because it has nested dicts,
+# #         each dict is to be a row
+# # http://stackoverflow.com/questions/26074447/creating-a-pandas-dataframe-from-a-dictionary
+coloradobusinesses=pd.DataFrame(
+    data,
+    columns=coloradojson_fields,
+)
+print coloradobusinesses.head()
+'''
+  agentprincipalzipcode agentprincipaladdress1 agentprincipalstate
+0            80513-8444   1617 White Water Ct.                  CO
+1                 81301           777 Main Ave                  CO
+2                 80236    3821 w greenwood pl                  CO
+3                 80465    18707 S. Fairall Rd                  CO
+4                 80022    7000 Glencoe Street                  CO
+'''
+print coloradobusinesses.ix[7]
+# this is transposed for row 7
+'''
+agentprincipalzipcode             80135
+agentprincipaladdress1    6800 N HWY 85
+agentprincipalstate                  CO
+Name: 7, dtype: object
+'''
