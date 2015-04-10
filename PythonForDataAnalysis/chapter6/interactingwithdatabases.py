@@ -33,6 +33,29 @@ con.commit()
 cursor=con.execute("SELECT * FROM test")
 rows=cursor.fetchall()
 print rows
-"""
+'''
 [(u'Atlanta', u'Georgia', 1.25, 6), (u'Tallahassee', u'Florida', 2.6, 3), (u'Sacramento', u'California', 1.7, 5)]
-"""
+'''
+print cursor.description
+# note the col names in index 0 of tuples
+'''
+(('a', None, None, None, None, None, None), ('b', None, None, None, None, None, None), ('c', None, None, None, None, None, None), ('d', None, None, None, None, None, None))
+'''
+print pd.DataFrame(
+    rows,
+    columns=zip(*cursor.description)[0]
+)
+'''
+             a           b     c  d
+0      Atlanta     Georgia  1.25  6
+1  Tallahassee     Florida  2.60  3
+2   Sacramento  California  1.70  5
+'''
+print pd.io.sql.read_sql("SELECT * FROM test",con)
+# note: .read_frame is deprecated
+'''
+             a           b     c  d
+0      Atlanta     Georgia  1.25  6
+1  Tallahassee     Florida  2.60  3
+2   Sacramento  California  1.70  5
+'''
