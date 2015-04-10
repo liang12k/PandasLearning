@@ -41,8 +41,22 @@ print cursor.description
 '''
 (('a', None, None, None, None, None, None), ('b', None, None, None, None, None, None), ('c', None, None, None, None, None, None), ('d', None, None, None, None, None, None))
 '''
+print zip(*cursor.description)
+# * is a splat operator
+# http://stackoverflow.com/questions/5917522/unzipping-and-the-operator
+# feed each elem of *elems as an arg to zip()
+'''
+[('a', 'b', 'c', 'd'),
+ (None, None, None, None),
+ (None, None, None, None),
+ (None, None, None, None),
+ (None, None, None, None),
+ (None, None, None, None),
+ (None, None, None, None)]
+'''
 print pd.DataFrame(
     rows,
+    # * passes in cursor.desciption as list of tuples
     columns=zip(*cursor.description)[0]
 )
 '''
