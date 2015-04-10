@@ -30,7 +30,8 @@ stmt="INSERT INTO test VALUES(?,?,?,?)"
 con.executemany(stmt,data)
 con.commit()
 
-cursor=con.execute("SELECT * FROM test")
+query="SELECT * FROM test"
+cursor=con.execute(query)
 rows=cursor.fetchall()
 print rows
 '''
@@ -65,7 +66,7 @@ print pd.DataFrame(
 1  Tallahassee     Florida  2.60  3
 2   Sacramento  California  1.70  5
 '''
-print pd.io.sql.read_sql("SELECT * FROM test",con)
+print pd.io.sql.read_sql(query,con)
 # note: .read_frame is deprecated
 '''
              a           b     c  d
