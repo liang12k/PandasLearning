@@ -16,4 +16,5 @@ http://goo.gl/p0qZrE
 git cmd cheat sheet ref
 http://goo.gl/bbjqyR
 
-
+mongodb installation and running (Mac OS X)
+http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/

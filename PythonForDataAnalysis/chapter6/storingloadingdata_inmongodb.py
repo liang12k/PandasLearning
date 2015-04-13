@@ -2,6 +2,10 @@
 to get mongodb working, be sure to install mongodb!
 follow instructions here:
 http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/
+
+**note: mongodb is running in root '/' folder /data/db/
+  ex: initandlisten] ERROR:   addr already in use
+^ the db.0, .ns, .lock files are created there
 """
 
 import pandas as pd
