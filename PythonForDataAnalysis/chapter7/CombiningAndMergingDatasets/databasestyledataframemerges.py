@@ -3,7 +3,11 @@ merge, join operations:
 -combine data sets by linking rows using 1+ keys
  ^ central to relational databases
 
-**note: default merge on overlapping col names as keys
+**note: defaults merge
+-on overlapping col names as keys
+-inner join: intersection of keys
+-outer join: union of keys
+-left, right join: respective of tables left,right
 """
 
 import pandas as pd
@@ -96,6 +100,8 @@ print df4
 2      2    d
 '''
 print pd.merge(df3,df4,left_on="lkey",right_on="rkey")
+# merge on like lkey,rkey vals
+#
 # **note: mergeerror on no common col names
 # pd.merge(df3,df4)
 # MergeError: No common columns to perform merge on
@@ -107,4 +113,21 @@ print pd.merge(df3,df4,left_on="lkey",right_on="rkey")
 3      2    a      0    a
 4      4    a      0    a
 5      5    a      0    a
+'''
+print pd.merge(df1,df2,how="outer")
+# outer join is a union of values
+# overlapping 'key' col name;
+# **note: NaN val for DNEs
+# 'key' val 'd' DNE in 'data1',
+# 'c' DNE in 'data2'
+'''
+   data1 key  data2
+0      0   b      1
+1      1   b      1
+2      6   b      1
+3      2   a      0
+4      4   a      0
+5      5   a      0
+6      3   c    NaN
+7    NaN   d      2
 '''
