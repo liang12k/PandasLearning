@@ -8,6 +8,9 @@ merge, join operations:
 -inner join: intersection of keys
 -outer join: union of keys
 -left, right join: respective of tables left,right
+
+many-to-many joins:
+-cartesian product of rows
 """
 
 import pandas as pd
@@ -130,4 +133,71 @@ print pd.merge(df1,df2,how="outer")
 5      5   a      0
 6      3   c    NaN
 7    NaN   d      2
+'''
+# # many-to-many merges
+df1=pd.DataFrame(
+    {
+        "key":list("bbacab"),
+        "data1":range(6)
+    }
+)
+df2=pd.DataFrame(
+    {
+        "key":list("ababd"),
+        "data2":range(5)
+    }
+)
+print df1
+'''
+   data1 key
+0      0   b
+1      1   b
+2      2   a
+3      3   c
+4      4   a
+5      5   b
+'''
+print df2
+'''
+   data2 key
+0      0   a
+1      1   b
+2      2   a
+3      3   b
+4      4   d
+'''
+print pd.merge(df1,df2,on="key",how="left")
+# left-join on 'key' col, onto df1
+# **note: df2 doesn't have 'c' val in 'key' col, NaN
+# cartesian product of rows:
+# df1 has 3 'b' vals, df2 has 2 'b' vals
+'''
+    data1 key  data2
+0       0   b      1
+1       0   b      3
+2       1   b      1
+3       1   b      3
+4       2   a      0
+5       2   a      2
+6       3   c    NaN
+7       4   a      0
+8       4   a      2
+9       5   b      1
+10      5   b      3
+'''
+print pd.merge(df1,df2,how="inner")
+# inner-join (intersection) of common cols' vals
+# **note: no 'c' in 'key' as it's not in df2
+'''
+   data1 key  data2
+0      0   b      1
+1      0   b      3
+2      1   b      1
+3      1   b      3
+4      5   b      1
+5      5   b      3
+6      2   a      0
+7      2   a      2
+8      4   a      0
+9      4   a      2
 '''
