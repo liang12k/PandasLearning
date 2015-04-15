@@ -275,3 +275,16 @@ print pd.merge(left,right,on="key1",suffixes=("_left","_right"))
 4  bar       one     3        one     6
 5  bar       one     3        two     7
 '''
+
+# # Table 7-1: merge function arguments
+{'copy': 'If False, avoid copying data into resulting data structure in some exceptional cases. By default always copies',
+ 'how': "One of 'inner', 'outer', 'left' or 'right'. 'inner' by default",
+ 'left': 'DataFrame to be merged on the left side',
+ 'left_index': 'Use row index in left as its join key (or keys, if a MultiIndex) right_index Analogous to left_index',
+ 'left_on': 'Columns in left DataFrame to use as join keys',
+ 'on': 'Column names to join on. Must be found in both DataFrame objects. If not specified and no other join keys given, will use the intersection of the column names in left and right as the join keys',
+ 'right': 'DataFrame to be merged on the right side',
+ 'right_index': 'Analogous to left_index',
+ 'right_on': 'Analogous to left_on for left DataFrame',
+ 'sort': 'Sort merged data lexicographically by join keys; True by default. Disable to get better performance in some cases on large datasets',
+ 'suffixes': "Tuple of string values to append to column names in case of overlap; defaults to ('_x', '_y'). For example, if 'data' in both DataFrame objects, would appear as 'data_x' and 'data_y' in result"}
