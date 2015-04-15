@@ -247,3 +247,31 @@ print pd.merge(left,right,on=["key1","key2"],how="outer")
 3  bar  one     3     6
 4  bar  two   NaN     7
 '''
+# # overlapping col names
+# # merge 'suffixes' option for specifying strings
+# # to append to overlapping names
+print pd.merge(left,right,on="key1")
+# duplicate 'key1' col name
+# suffix appended onto the other same col name(s)
+# -in this case, 'key2' for left and right dataframes
+'''
+  key1 key2_x  lval key2_y  rval
+0  foo    one     1    one     4
+1  foo    one     1    one     5
+2  foo    two     2    one     4
+3  foo    two     2    one     5
+4  bar    one     3    one     6
+5  bar    one     3    two     7
+'''
+print pd.merge(left,right,on="key1",suffixes=("_left","_right"))
+# specifying suffixes for left, right
+# '_left', '_right' respectively
+'''
+  key1 key2_left  lval key2_right  rval
+0  foo       one     1        one     4
+1  foo       one     1        one     5
+2  foo       two     2        one     4
+3  foo       two     2        one     5
+4  bar       one     3        one     6
+5  bar       one     3        two     7
+'''
