@@ -201,3 +201,49 @@ print pd.merge(df1,df2,how="inner")
 8      4   a      0
 9      4   a      2
 '''
+# # merge with multiple keys,
+# # using list of col names
+left=pd.DataFrame(
+    {
+        "key1":["foo","foo","bar"],
+        "key2":["one","two","one"],
+        "lval":[1,2,3]
+    }
+)
+right=pd.DataFrame(
+    {
+        "key1":["foo","foo","bar","bar"],
+        "key2":["one","one","one","two"],
+        "rval":[4,5,6,7]
+    }
+)
+print left
+'''
+  key1 key2  lval
+0  foo  one     1
+1  foo  two     2
+2  bar  one     3
+'''
+print right
+'''
+  key1 key2  rval
+0  foo  one     4
+1  foo  one     5
+2  bar  one     6
+3  bar  two     7
+'''
+print pd.merge(left,right,on=["key1","key2"],how="outer")
+# common vals dependent on cols 'key1','key2'
+# outer-join is a union of vals
+# ^ note:
+#   'foo','one' gets 'lval' 1,1 & 'rval' 4,5
+#   'bar','two' gets NaN for 'lval' as it DNE
+#   -same idea for 'foo','two' for 'rval'
+'''
+  key1 key2  lval  rval
+0  foo  one     1     4
+1  foo  one     1     5
+2  foo  two     2   NaN
+3  bar  one     3     6
+4  bar  two   NaN     7
+'''
