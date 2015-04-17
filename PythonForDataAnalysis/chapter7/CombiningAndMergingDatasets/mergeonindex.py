@@ -7,6 +7,7 @@ indivually or both to indicate index used as merge key
 """
 
 import pandas as pd
+import numpy as np
 
 left1=pd.DataFrame(
     {
@@ -44,4 +45,52 @@ b        7.0
 3   a      3        3.5
 1   b      1        7.0
 4   b      4        7.0
+'''
+# print pd.merge(left1,right1,left_on="key",right_index=True,how="outer")
+# using common col vals of left1 'key' col and
+# right1 index vals, get an outer join (union) result
+'''
+  key  value  group_val
+0   a      0        3.5
+2   a      2        3.5
+3   a      3        3.5
+1   b      1        7.0
+4   b      4        7.0
+5   c      5        NaN
+'''
+# # hierarchically-indexed data
+lefth=pd.DataFrame(
+    {
+        "key1":["Ohio"]*3+["Nevada"]*2,
+        "key2":[2000,2001,2002,2001,2002],
+        "data":np.arange(5.)
+    }
+)
+righth=pd.DataFrame(
+    # 6 rows, 2 cols
+    np.arange(12).reshape((6,2)),
+    index=[
+        ["Nevada"]*2+["Ohio"]*4,
+        [2001,2000,2000,2000,2001,2002]
+    ],
+    columns=["event1","event2"]
+)
+print lefth
+'''
+   data    key1  key2
+0     0    Ohio  2000
+1     1    Ohio  2001
+2     2    Ohio  2002
+3     3  Nevada  2001
+4     4  Nevada  2002
+'''
+print righth
+'''
+             event1  event2
+Nevada 2001       0       1
+       2000       2       3
+Ohio   2000       4       5
+       2000       6       7
+       2001       8       9
+       2002      10      11
 '''
