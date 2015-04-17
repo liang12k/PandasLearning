@@ -94,3 +94,38 @@ Ohio   2000       4       5
        2001       8       9
        2002      10      11
 '''
+# print pd.merge(lefth,righth,left_on=["key1","key2"],right_index=True)
+# lefth 'key1','key2' cols share values with
+# righth multiindex index values
+'''
+   data    key1  key2  event1  event2
+0     0    Ohio  2000       4       5
+0     0    Ohio  2000       6       7
+1     1    Ohio  2001       8       9
+2     2    Ohio  2002      10      11
+3     3  Nevada  2001       0       1
+'''
+# print pd.merge(lefth,righth,left_on=["key1","key2"],right_index=True,how="outer")
+# outer join to see union
+'''
+   data    key1  key2  event1  event2
+0     0    Ohio  2000       4       5
+0     0    Ohio  2000       6       7
+1     1    Ohio  2001       8       9
+2     2    Ohio  2002      10      11
+3     3  Nevada  2001       0       1
+4     4  Nevada  2002     NaN     NaN
+4   NaN  Nevada  2000       2       3
+'''
+# print pd.merge(lefth,righth,left_on=["key1","key2"],right_index=True,how="left")
+# to join on all lefth 'key1','key2' col vals
+# **note: NaN for righth values where Nevada,2002 DNE
+'''
+   data    key1  key2  event1  event2
+0     0    Ohio  2000       4       5
+0     0    Ohio  2000       6       7
+1     1    Ohio  2001       8       9
+2     2    Ohio  2002      10      11
+3     3  Nevada  2001       0       1
+4     4  Nevada  2002     NaN     NaN
+'''
