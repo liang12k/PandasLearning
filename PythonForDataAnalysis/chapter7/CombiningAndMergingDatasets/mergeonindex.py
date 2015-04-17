@@ -4,6 +4,8 @@ left_index=True,right_index=True
 indivually or both to indicate index used as merge key
 
 # http://pandas.pydata.org/pandas-docs/dev/generated/pandas.DataFrame.merge.html
+
+.join: default join using index values as left-join
 """
 
 import pandas as pd
@@ -57,6 +59,35 @@ b        7.0
 1   b      1        7.0
 4   b      4        7.0
 5   c      5        NaN
+'''
+# print left1.join(right1,on="key")
+# **note: defaults to left-join
+'''
+  key  value  group_val
+0   a      0        3.5
+1   b      1        7.0
+2   a      2        3.5
+3   a      3        3.5
+4   b      4        7.0
+5   c      5        NaN
+'''
+# print left1.join(right1)
+# **note: unknown what col to left-join on
+'''
+  key  value  group_val
+0   a      0        NaN
+1   b      1        NaN
+2   a      2        NaN
+3   a      3        NaN
+4   b      4        NaN
+5   c      5        NaN
+'''
+# print right1.join(left1)
+# **note: unknow what col to left-join on
+'''
+   group_val  key  value
+a        3.5  NaN    NaN
+b        7.0  NaN    NaN
 '''
 # # hierarchically-indexed data
 lefth=pd.DataFrame(
@@ -128,4 +159,50 @@ Ohio   2000       4       5
 2     2    Ohio  2002      10      11
 3     3  Nevada  2001       0       1
 4     4  Nevada  2002     NaN     NaN
+'''
+left2=pd.DataFrame(
+    [[1.,2.],[3.,4.],[5.,6.]],
+    index=list("ace"),
+    columns=["Ohio","Nevada"]
+)
+right2=pd.DataFrame(
+    [[7.,8.],[9.,10.],[11.,12.],[13,14]],
+    index=list("bcde"),
+    columns=["Missouri","Alabama"]
+)
+# print left2
+'''
+   Ohio  Nevada
+a     1       2
+c     3       4
+e     5       6
+'''
+# print right2
+'''
+   Missouri  Alabama
+b         7        8
+c         9       10
+d        11       12
+e        13       14
+'''
+# print pd.merge(left2,right2,how="outer",left_index=True,right_index=True)
+# using index values of left2, right2
+# merge on like vals, outer-join (union)
+'''
+   Ohio  Nevada  Missouri  Alabama
+a     1       2       NaN      NaN
+b   NaN     NaN         7        8
+c     3       4         9       10
+d   NaN     NaN        11       12
+e     5       6        13       14
+'''
+# .join: merging on keys (by default)
+# print left2.join(right2,how="outer")
+'''
+   Ohio  Nevada  Missouri  Alabama
+a     1       2       NaN      NaN
+b   NaN     NaN         7        8
+c     3       4         9       10
+d   NaN     NaN        11       12
+e     5       6        13       14
 '''
