@@ -6,6 +6,7 @@ indivually or both to indicate index used as merge key
 # http://pandas.pydata.org/pandas-docs/dev/generated/pandas.DataFrame.merge.html
 
 .join: default join using index values as left-join
+-alternative to .concat of DataFrames
 """
 
 import pandas as pd
@@ -205,4 +206,53 @@ b   NaN     NaN         7        8
 c     3       4         9       10
 d   NaN     NaN        11       12
 e     5       6        13       14
+'''
+# # index-on-index merges
+# # using .join as an alternative to .concat
+another=pd.DataFrame(
+    [[7.,8.],[9.,10.],[11.,12.],[16.,17.]],
+    index=list("acef"),
+    columns=["New York","Oregon"]
+)
+# print another
+'''
+   New York  Oregon
+a         7       8
+c         9      10
+e        11      12
+f        16      17
+'''
+# print left2.join([right2,another])
+# joining on index values
+'''
+   Ohio  Nevada  Missouri  Alabama  New York  Oregon
+a     1       2       NaN      NaN         7       8
+c     3       4         9       10         9      10
+e     5       6        13       14        11      12
+'''
+# print left2.join([right2,another],how="outer")
+# joining on index values, union
+'''
+   Ohio  Nevada  Missouri  Alabama  New York  Oregon
+a     1       2       NaN      NaN         7       8
+b   NaN     NaN         7        8       NaN     NaN
+c     3       4         9       10         9      10
+d   NaN     NaN        11       12       NaN     NaN
+e     5       6        13       14        11      12
+f   NaN     NaN       NaN      NaN        16      17
+'''
+# print pd.concat([left2,right2,another])
+'''
+   Alabama  Missouri  Nevada  New York  Ohio  Oregon
+a      NaN       NaN       2       NaN     1     NaN
+c      NaN       NaN       4       NaN     3     NaN
+e      NaN       NaN       6       NaN     5     NaN
+b        8         7     NaN       NaN   NaN     NaN
+c       10         9     NaN       NaN   NaN     NaN
+d       12        11     NaN       NaN   NaN     NaN
+e       14        13     NaN       NaN   NaN     NaN
+a      NaN       NaN     NaN         7   NaN       8
+c      NaN       NaN     NaN         9   NaN      10
+e      NaN       NaN     NaN        11   NaN      12
+f      NaN       NaN     NaN        16   NaN      17
 '''
