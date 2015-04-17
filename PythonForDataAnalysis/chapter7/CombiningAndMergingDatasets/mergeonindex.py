@@ -2,6 +2,8 @@
 merge keys of DataFrame can be found in its index
 left_index=True,right_index=True
 indivually or both to indicate index used as merge key
+
+# http://pandas.pydata.org/pandas-docs/dev/generated/pandas.DataFrame.merge.html
 """
 
 import pandas as pd
@@ -33,6 +35,8 @@ a        3.5
 b        7.0
 '''
 # print pd.merge(left1,right1,left_on="key",right_index=True)
+# merge on left1 'key' col, using right1 index col vals
+# which is ['a','b'] since there's no common col name
 '''
   key  value  group_val
 0   a      0        3.5
