@@ -248,3 +248,11 @@ df22=pd.DataFrame(np.random.randn(2,3),columns=list("bda")) # 2 rows, 3 cols
 '''
 
 # # Table7-2: .concat function arguments
+{'axis': 'Axis to concatenate along; defaults to 0',
+ 'ignore_index': 'Do not preserve indexes along concatenation axis, instead producing a new range(total_length) index',
+ 'join': "One of 'inner', 'outer', defaulting to 'outer'; whether to intersection (inner) or union (outer) together indexes along the other axes",
+ 'join_axes': 'Specific indexes to use for the other n-1 axes instead of performing union/intersection logic',
+ 'keys': 'Values to associate with objects being concatenated, forming a hierarchical index along the concatenation axis. Can either be a list or array of arbitrary values, an array of tuples, or a list of arrays (if multiple level arrays passed in levels)',
+ 'levels': 'Specific indexes to use as hierarchical index level or levels if keys passed names Names for created hierarchical levels if keys and / or levels passed',
+ 'objs': 'List or dict of pandas objects to be concatenated. The only required argument',
+ 'verify_integrity': 'Check new axis in concatenated object for duplicates and raise exception if so. By default (False) allows duplicates'}
