@@ -139,3 +139,112 @@ three  a    0
        g    6
 dtype: int64
 '''
+# # **note: concat on Series or DataFrame with axis=1
+# # hierarchical keys becaome DataFrame column
+# print pd.concat([s1,s2,s3],axis=1,keys=["one","two","three"])
+'''
+   one  two  three
+a    0  NaN    NaN
+b    1  NaN    NaN
+c  NaN    2    NaN
+d  NaN    3    NaN
+e  NaN    4    NaN
+f  NaN  NaN      5
+g  NaN  NaN      6
+'''
+df1=pd.DataFrame(
+    np.arange(6).reshape(3,2),
+    index=list("abc"),
+    columns=["one","two"]
+)
+df2=pd.DataFrame(
+    5+np.arange(4).reshape(2,2),
+    index=["a","c"],
+    columns=["three","four"]
+)
+# print df1
+'''
+   one  two
+a    0    1
+b    2    3
+c    4    5
+'''
+# print df2
+'''
+   three  four
+a      5     6
+c      7     8
+'''
+# print pd.concat([df1,df2],axis=1,keys=["level1","level2"])
+# **note: axis=1 : keys are the col hierarchical index
+'''
+  level1     level2
+     one two  three four
+a      0   1      5    6
+b      2   3    NaN  NaN
+c      4   5      7    8
+'''
+# print pd.concat([df1,df2],keys=["level1","level2"])
+'''
+          four  one  three  two
+level1 a   NaN    0    NaN    1
+       b   NaN    2    NaN    3
+       c   NaN    4    NaN    5
+level2 a     6  NaN      5  NaN
+       c     8  NaN      7  NaN
+'''
+# print pd.concat({"level1":df1,"level2":df2},axis=1)
+# passing in dict of objs, dict keys used for keys
+'''
+  level1     level2
+     one two  three four
+a      0   1      5    6
+b      2   3    NaN  NaN
+c      4   5      7    8
+'''
+# print pd.concat([df1,df2],axis=1,keys=["level1","level2"],names=["upper","lower"])
+# naming upper,lower hierarchical indexes
+'''
+upper level1     level2
+lower    one two  three four
+a          0   1      5    6
+b          2   3    NaN  NaN
+c          4   5      7    8
+'''
+df11=pd.DataFrame(np.random.randn(3,4),columns=list("abcd")) # 3 rows, 4 cols
+df22=pd.DataFrame(np.random.randn(2,3),columns=list("bda")) # 2 rows, 3 cols
+# print df11
+'''
+          a         b         c         d
+0 -1.385537 -0.673809 -0.327916  0.393996
+1  2.798291 -0.510207 -0.629066  0.118758
+2 -0.122484 -0.778146  0.571123 -1.043147
+'''
+# print df22
+'''
+          b         d         a
+0  3.235226 -0.699285  1.386694
+1 -1.030489 -0.035350 -2.215457
+'''
+# print pd.concat([df11,df22],ignore_index=True)
+# **note: ignore_index creates the standard index count
+'''
+          a         b         c         d
+0 -1.385537 -0.673809 -0.327916  0.393996
+1  2.798291 -0.510207 -0.629066  0.118758
+2 -0.122484 -0.778146  0.571123 -1.043147
+3  1.386694  3.235226       NaN -0.699285
+4 -2.215457 -1.030489       NaN -0.035350
+'''
+# pd.concat([df11,df22])
+# **note: index values are unioned vs ignore_index isn't
+'''
+          a         b         c         d
+0 -1.385537 -0.673809 -0.327916  0.393996
+1  2.798291 -0.510207 -0.629066  0.118758
+2 -0.122484 -0.778146  0.571123 -1.043147
+0  1.386694  3.235226       NaN -0.699285
+1 -2.215457 -1.030489       NaN -0.035350
+'''
+
+# # Table7-2: .concat function arguments
