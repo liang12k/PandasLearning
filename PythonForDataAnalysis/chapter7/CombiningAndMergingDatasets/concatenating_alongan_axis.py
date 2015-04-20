@@ -37,6 +37,7 @@ g    6
 dtype: int64
 '''
 # print pd.concat([s1,s2,s3],axis=1)
+# axis=1 is cols; no overlap of cols in union
 '''
     0   1   2
 a   0 NaN NaN
@@ -46,4 +47,27 @@ d NaN   3 NaN
 e NaN   4 NaN
 f NaN NaN   5
 g NaN NaN   6
+'''
+s4=pd.concat([s1*5,s3])
+# print s4
+'''
+a    0
+b    5
+f    5
+g    6
+dtype: int64
+'''
+# print pd.concat([s1,s4],axis=1)
+'''
+    0  1
+a   0  0
+b   1  5
+f NaN  5
+g NaN  6
+'''
+# print pd.concat([s1,s4],axis=1,join="inner")
+'''
+   0  1
+a  0  0
+b  1  5
 '''
