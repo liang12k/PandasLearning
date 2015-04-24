@@ -1,10 +1,20 @@
+
+Reference .txt for general operations in pandas
+-----------------------------------------------
+
+General DataFrame operations (**)
+http://manishamde.github.io/blog/2013/03/07/pandas-and-python-top-10/
+
+
 DataFrame.ix
 http://stackoverflow.com/questions/10665889/how-to-take-column-slices-of-dataframe-in-pandas
 .ix[row slice, column slice]
 
-Normalize
+
+Normalize (aka: standardize table)
 # prop == proportions
 prop = table / table.sum().astype(float)
+
 
 matplotlib
 -linestyles: 
