@@ -7,6 +7,9 @@ http://goo.gl/4vagxu
 using workbook:
 Python for Data Analysis (O'Reilly, W. McKinney)
 
+general pandas DataFrame operations (**)
+http://manishamde.github.io/blog/2013/03/07/pandas-and-python-top-10/
+
 common mac terminal nano cmds
 http://goo.gl/fRrLZg
 
